@@ -1,0 +1,97 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    display: none;
+}
+
+.arrow_container {
+    width: 80px;
+    height: 80px;
+    background-color: #fff7f7;
+    /* border-radius: 50%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* position: absolute; */
+    /* left: 20px; */
+    cursor: pointer;
+    color: #cecece;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.arrow_container:first-of-type {
+    margin-right: 2px;
+}
+
+.arrow_container:hover {
+    color: coral;
+}
+
+.icons_container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    z-index: 9;
+}
+
+.arrow_container:last-of-type {
+    right: 20px;
+}
+
+.slider_container {
+    display: flex;
+    height: 100%;
+    /* justify-content: space-between; */
+    align-items: center;
+    width: 95%;
+    margin: auto;
+    background-color: coral;
+    /* overflow-x: hidden; */
+
+}
+
+.slide  {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* flex: 1; */
+    
+}
+
+.info_wrapper {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    
+}
+.image_container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image_wrapper {
+    height: 400px;
+    position: relative;
+    width: 400px;
+}
+
+/* .image_wrapper > div {
+    position: unset !important;
+}
+
+.image {
+     object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+} */
