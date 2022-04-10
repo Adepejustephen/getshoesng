@@ -50,7 +50,7 @@ const Products = () => {
                             <p className={styles.product_name}>{item.name}</p>
                           </a>
                         </NextLink>
-                        <h3 className={styles.product_price}>{item.price}</h3>
+                        <h3 className={styles.product_price}>${item.price}</h3>
                       </div>
                     </CardContent>
                   </Card>
