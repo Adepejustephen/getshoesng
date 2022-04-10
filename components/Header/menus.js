@@ -6,7 +6,7 @@ const menus = [
 
   {
     name: "Products",
-    link: "products",
+    link: "/products",
     },
   
   {
