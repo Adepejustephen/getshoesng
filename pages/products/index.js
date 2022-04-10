@@ -4,8 +4,13 @@ import NextLink from "next/link";
 import Image from "next/image";
 import {BsCart2} from 'react-icons/bs'
 import styles from "../../styles/pages/Products.module.css";
+import db from '../../utils/db'
+import Product from '../../models/Product'
 
-const Products = () => {
+const Products = (props) => {
+
+  const {products} = props
+  
 
   // const menuItems = [...new Set(data.map((Val) => Val.category))];
 
@@ -26,9 +31,9 @@ const Products = () => {
         </Grid>
         <Grid item xs={12} md={9}>
           <div className={styles.products_container}>
-            {data.products.map((item, id) => {
+            {products.map((item) => {
               return (
-                <div className={styles.product_wrapper} key={id}>
+                <div className={styles.product_wrapper} key={item._id}>
                   <Card elevation={0} variant="outlined">
                     <div className={styles.image_container}>
                       <Image
@@ -63,5 +68,22 @@ const Products = () => {
     </div>
   );
 };
+
+export async function getServerSideProps() {
+  await db.connect()
+
+  // const products = await Product.find({}).lean();
+  const products = await Product.find({}).lean()
+
+
+  await db.disconnect()
+
+  return {
+    props: {
+      // products,
+      products: products.map(db.converDocToObj),
+    },
+  }
+ }
 
 export default Products;

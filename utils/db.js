@@ -19,11 +19,10 @@ async function connect() {
         await mongoose.disconnect();
     }
 
-    const db = await mongoose.connect(process.env.MONGOD_URI, {
+    const db = await mongoose.connect(process.env.MONGODB_URI, {
 
-        useNewUrlPaser: true,
+        useNewUrlParser: true,
         useUnifiedTopology: true,
-        useCreateIndex: true,
     })
 
     console.log('new connection')
@@ -45,6 +44,13 @@ async function disconnect() {
     }
 }
 
-const db = {connect, disconnect}
+function converDocToObj(doc) {
+    doc._id = doc._id.toString();
+    doc.createdAt= doc.createdAt.toString()
+    doc.updatedAt = doc.updatedAt.toString()
+    return doc
+}
+
+const db = {connect, disconnect, converDocToObj}
 
 export default db

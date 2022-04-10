@@ -6,6 +6,7 @@ const data = {
       color: "White/Light Photo Blue/Deep Royal Blue/White",
       category: "Sneekers",
       status: "Trending",
+      slug: "nike-air-force-1-react",
       image: [
         "/images/products/airforceWhite/img01.png",
         "/images/products/airforceWhite/img02.png",
@@ -25,6 +26,7 @@ const data = {
       color: "Moon Fossil/Black",
       category: "sandals",
       status: "New Products",
+      slug: "nike-acg-air-deschutz",
       image: [
         "/images/products/acgMoon/img01.png",
         "/images/products/acgMoon/img02.png",
@@ -43,6 +45,7 @@ const data = {
       color: "Black/Team Orange/Pink Prime/Black",
       category: "Sneekers",
       status: "New Products",
+      slug: "nike-air-force-1-react-black",
       image: [
         "/images/products/airforceBlack/img01.png",
         "/images/products/airforceBlack/img02.png",
@@ -57,11 +60,12 @@ const data = {
     },
 
     {
-      name: "Nike ACG Air Deschutz + (Redstone/Black) ",
+      name: "TERREX CYPREX ULTRA II DLX SANDALS ",
       desc: " From city hikes to canyon trails and long walks on the beach, the Nike ACG Air Deschutz + is built to feel comfortable.It's got a classic '90s look and rugged outdoor-inspired design, with plush padding around the ankle for support.A heavy-duty webbing strap and adjustable hook-and-loop closure keep you focused on the journey ahead.",
-      color: "Redstone/Black",
+      color: "Wonder White/Pulse Lime/Crystal White",
       category: "sandals",
       status: "Trending",
+      slug: "terrex-cyprex-ultra-ii-dlx-sandals",
       image: [
         "/images/products/acgRedStone/img01.png",
         "/images/products/acgRedStone/img02.png",
@@ -80,6 +84,7 @@ const data = {
       color: "Pure Platinum/White/Wolf Grey",
       category: "Sneekers",
       status: "Trending",
+      slug: "jordan-point-lane",
       image: [
         "/images/products/jordanPointWhite/img01.png",
         "/images/products/jordanPointWhite/img02.png",
@@ -98,6 +103,7 @@ const data = {
       color: "Multi-Colour/Black",
       category: "Sandals",
       status: "New Products",
+      slug: "nike-air-deschutz-betrue",
       image: [
         "/images/products/nikeBeTrue/img01.png",
         "/images/products/nikeBeTrue/img02.png",
@@ -116,6 +122,7 @@ const data = {
       color: "Solar Red",
       category: "Slides",
       status: "Trending",
+      slug: "adilette-aqua-slides",
       image: [
         "/images/products/adiletteAqua/img01.png",
         "/images/products/adiletteAqua/img02.png",
@@ -134,6 +141,7 @@ const data = {
       color: "multi/Black",
       category: "Clogs",
       status: "Trending",
+      slug: "classic-lined-tie-dye-clog",
       image: [
         "/images/products/dyedClog/img01.png",
         "/images/products/dyedClog/img02.png",
@@ -152,6 +160,7 @@ const data = {
       color: "Core Black",
       category: "Slides",
       status: "old",
+      slug: "adilette-comfort-slides",
       image: [
         "/images/products/adiletteComfort/img01.png",
         "/images/products/adiletteComfort/img02.png",
@@ -170,6 +179,7 @@ const data = {
       color: "Black",
       category: "Clogs",
       status: "New Products",
+      slug: "classic-lined-clog",
       image: [
         "/images/products/classicClog/img01.png",
         "/images/products/classicClog/img02.png",
@@ -188,6 +198,7 @@ const data = {
       color: "Royal Blue",
       category: "Slides",
       status: "Trending",
+      slug: "racer-tr-slides",
       image: [
         "/images/products/racerTr/img01.png",
         "/images/products/racerTr/img02.png",
@@ -206,6 +217,7 @@ const data = {
       color: "White/Black",
       category: "Clogs",
       status: "New Products",
+      slug: "classic-lined-marbled-clog",
       image: [
         "/images/products/mableClog/img01.png",
         "/images/products/mableClog/img02.png",
