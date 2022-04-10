@@ -37,7 +37,7 @@ const Products = () => {
                         layout="fill"
                         objectFit="contain"
                         objectPosition="center"
-                        priority='false'
+                        priority='true'
                       />
                       <div className={styles.cart_icon_container}>
                         <BsCart2 className={styles.cart_icon} />

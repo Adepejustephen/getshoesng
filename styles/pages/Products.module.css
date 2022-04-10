@@ -73,6 +73,7 @@
 .product_name {
     color: #252525;
     cursor: pointer;
+    text-transform: uppercase;
 }
 
 .product_price {
