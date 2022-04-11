@@ -1,5 +1,4 @@
 import { Grid, Card, CardContent } from "@mui/material";
-import data from "../../utils/data";
 import NextLink from "next/link";
 import Image from "next/image";
 import {BsCart2} from 'react-icons/bs'
@@ -72,7 +71,7 @@ const Products = (props) => {
 export async function getServerSideProps() {
   await db.connect()
 
-  // const products = await Product.find({}).lean();
+  
   const products = await Product.find({}).lean()
 
 
@@ -80,7 +79,6 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      // products,
       products: products.map(db.converDocToObj),
     },
   }
