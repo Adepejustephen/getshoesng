@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { Grid, Card, CardContent } from "@mui/material";
 import NextLink from "next/link";
 import Image from "next/image";
@@ -5,11 +6,14 @@ import {BsCart2} from 'react-icons/bs'
 import styles from "../../styles/pages/Products.module.css";
 import db from '../../utils/db'
 import Product from '../../models/Product'
+import axios from "axios";
+import {Store} from '../../utils/store'
+
 
 const Products = (props) => {
 
-  const {products} = props
-  
+  const { products } = props
+  const { dispatch } = useContext(Store)
 
   // const menuItems = [...new Set(data.map((Val) => Val.category))];
 
@@ -21,6 +25,20 @@ const Products = (props) => {
   //   setItem(newItem);
   // };
 
+  const addToCartHandler = async (product) => {
+    const { data } = await axios.get(`/api/products/${product._id}`);
+
+    if (data.countInStock <= 0) {
+      window.alert("Sorry. Product is out of stock");
+    }
+
+    dispatch({
+      type: "ADD_TO_CART_ITEMS",
+      payload: { ...product, quantity: 1 },
+    });
+  };
+
+
 
   return (
     <div className={styles.container}>
@@ -30,31 +48,41 @@ const Products = (props) => {
         </Grid>
         <Grid item xs={12} md={9}>
           <div className={styles.products_container}>
-            {products.map((item) => {
+            {products.map((product) => {
               return (
-                <div className={styles.product_wrapper} key={item._id}>
+                <div className={styles.product_wrapper} key={product._id}>
                   <Card elevation={0} variant="outlined">
                     <div className={styles.image_container}>
                       <Image
-                        src={item.image[0]}
-                        alt={item.name}
+                        src={product.image[0]}
+                        alt={product.name}
                         layout="fill"
                         objectFit="contain"
                         objectPosition="center"
-                        priority='true'
+                        priority={true}
                       />
                       <div className={styles.cart_icon_container}>
-                        <BsCart2 className={styles.cart_icon} />
+                        <BsCart2
+                          className={styles.cart_icon}
+                          onClick={() => addToCartHandler(product)}
+                        />
                       </div>
                     </div>
                     <CardContent>
                       <div>
-                        <NextLink href={"/"} passHref>
+                        <NextLink
+                          href={`/products/product/${product.slug}`}
+                          passHref
+                        >
                           <a>
-                            <p className={styles.product_name}>{item.name}</p>
+                            <p className={styles.product_name}>
+                              {product.name}
+                            </p>
                           </a>
                         </NextLink>
-                        <h3 className={styles.product_price}>${item.price}</h3>
+                        <h3 className={styles.product_price}>
+                          ${product.price}
+                        </h3>
                       </div>
                     </CardContent>
                   </Card>

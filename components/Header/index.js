@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import NextLink from "next/link";
 import Carousel from "../Carousel";
 import styles from "../../styles/components/Header.module.css";
@@ -11,25 +12,30 @@ import { MdExitToApp } from "react-icons/md";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import { Card } from "@mui/material";
+import { Store } from "../../utils/store";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     right: -2,
     top: -1,
     color: "#fff",
-    fontSize: "10px",
+    fontSize: "12px",
     lineHeight: "12px",
     // border: `2px solid ${theme.palette.background.paper}`,
     padding: "2px",
     backgroundColor: "coral",
     cursor: "pointer",
-    height: "14px",
-    minWidth: "14px",
+    height: "16px",
+    minWidth: "16px",
     borderRadius: "50%",
   },
 }));
 
 const Header = () => {
+
+  const { state} = useContext(Store);
+  const { cart } = state;
+
   return (
     <header className={styles.header}>
       <nav className={styles.nav_container}>
@@ -103,7 +109,11 @@ const Header = () => {
               </div>
             </div>
             <div className={styles.icon_container}>
-              <StyledBadge badgeContent={4}>
+              <StyledBadge
+                badgeContent={
+                  cart.cartItems.length < 1 ? "0" : cart.cartItems.length
+                }
+              >
                 <BsCart2 className={styles.icon} />
               </StyledBadge>
             </div>
