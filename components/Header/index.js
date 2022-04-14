@@ -13,6 +13,7 @@ import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import { Card } from "@mui/material";
 import { Store } from "../../utils/store";
+import CartList from '../CartList'
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -67,7 +68,7 @@ const Header = () => {
             <div className={styles.icon_container}>
               <IoSearchOutline className={styles.icon} />
             </div>
-            <div className={styles.icon_container && styles.user_icon}>
+            <div className={styles.icon_container}>
               <AiOutlineUser className={styles.icon} />
               <div className={styles.user_menu}>
                 <Card variant="outlined">
@@ -115,6 +116,9 @@ const Header = () => {
                 }
               >
                 <BsCart2 className={styles.icon} />
+                <div className={styles.cart_display}>
+                  <CartList />
+                </div>
               </StyledBadge>
             </div>
 
@@ -122,6 +126,7 @@ const Header = () => {
           </div>
         </div>
       </nav>
+
       <Carousel />
     </header>
   );

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;400;600&display=swap');
 
 html,
-body {
+body,* {
   padding: 0;
   margin: 0;
   font-family: 'Josefin Sans', sans-serif;

@@ -6,10 +6,12 @@
 .nav_container {
     /* width: 95%; */
     /* margin: 10px auto; */
-    height: 80px;
+    min-height: 80px;
     display: flex;
     align-items: center;
     padding: 0 20px;
+    width: 100%;
+    position: relative;
     
 }
 
@@ -19,6 +21,7 @@
     align-items: center;
     justify-content: space-between;
     height: 100%;
+    width: 100%;
 }
 
 .title {
@@ -47,15 +50,15 @@
     margin-right: 20px;
 }
 
-.group:last-of-type {
-    justify-content: right;
-}
+
 
 .icons {
     display: flex;
     align-items: center;
     font-size: 1.25rem;
     height: 100%;
+    flex: 1;
+     justify-content: right;
 }
 
 .icon {
@@ -63,6 +66,8 @@
     margin-left: 20px;
     cursor: pointer;
     color: #222;
+    height: 100%;
+    /* position: relative; */
 }
 
 .icon_container {
@@ -70,36 +75,44 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    /* flex: 1; */
     /* position: relative; */
-    /* height: 100%; */
+    height: 100%;
+    /* width: 100%; */
 }
 
-.user_icon {
-    position: relative;
-    display: flex;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
 
-    /* font-size: 1.5rem!important;
-    margin-left: 20px;
-    cursor: pointer;
-    color: #222; */
-}
-
-.user_icon:hover .user_menu{
+.icon_container:nth-of-type(2):hover .user_menu{
 display: inline-block;
 }
 
-.user_menu {
+
+
+.cart_display {
+    display: none;
     position: absolute;
-    bottom: -160px;
-    left: -120px;
+    bottom: -100px;
+    right: 100px;
     /* left: -100px; */
     z-index: 3;
     width: 160px;
     display: none;
     padding: 0;
+} 
+
+.icon_container:last-of-type:hover .cart_display{
+display: block;
+}
+
+.user_menu {
+    position: absolute;
+    right: 80px;
+    bottom: -140px;
+    /* left: -120px; */
+    /* left: -100px; */
+    z-index: 3;
+    width: 160px;
+    display: none;
     /* text-align: center; */
 }
 
@@ -111,7 +124,7 @@ display: inline-block;
     justify-content: center;
     /* align-items: center; */
     /* width: 100%; */
-    padding: 0;
+    padding: 1rem 0;
     
 }
 
