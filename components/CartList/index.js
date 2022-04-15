@@ -43,7 +43,6 @@ const CartList = () => {
                           <span className={styles.item_price}>
                             ${item.price}
                           </span>
-                          <FaTimes className={styles.delete_icon} />
                         </div>
                         <div className={styles.counter}>
                           <BiMinus className={styles.counter_icon} />
@@ -51,6 +50,10 @@ const CartList = () => {
                           <span>{count}</span>
                           <BiPlus className={styles.counter_icon} />
                         </div>
+                      </div>
+
+                      <div>
+                        <FaTimes className={styles.delete_icon} />
                       </div>
                     </Grid>
                   </Grid>
