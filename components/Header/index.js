@@ -89,16 +89,16 @@ const Header = () => {
                         </a>
                       </NextLink>
                     </li>
-                    <li className={styles.user_menu_list_item}>
+                    {/* <li className={styles.user_menu_list_item}>
                       <NextLink href={"/cart"} passHref>
                         <a>
                           <BsCart2 className={styles.user_menu_icon} />
                           <span>Cart items</span>
                         </a>
                       </NextLink>
-                    </li>
+                    </li> */}
                     <li className={styles.user_menu_list_item}>
-                      <NextLink href={"/checkout"} passHref>
+                      <NextLink href={"/cart"} passHref>
                         <a>
                           <MdExitToApp className={styles.user_menu_icon} />
                           <span>Check out</span>

@@ -59,8 +59,8 @@ const Products = (props) => {
                         layout="fill"
                         objectFit="contain"
                         objectPosition="center"
-                        priority
-                        loading="eager"
+                        // priority
+                        loading="lazy"
                       />
                       <div className={styles.cart_icon_container}>
                         <BsCart2

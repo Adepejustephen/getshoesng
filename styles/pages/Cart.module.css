@@ -1,0 +1,109 @@
+.container {
+  padding: 20px;
+}
+
+
+.cart_title {
+    border-bottom: 1px solid #eee;
+    color: #000;
+    font-weight: 700;
+    padding: 10px 15px;
+}
+
+.notice {
+    color: #666;
+    padding:15px;
+    font-weight: 400;
+}
+
+.link_back {
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    font-size: .825rem;
+    transition: color .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.link_back:hover {
+    color: coral;
+}
+.list {
+  padding: 20px 15px;
+}
+
+.list_container, .totals, .policy_container {
+  box-shadow: 1px 3px 1px rgb(50 50 50 / 4%);
+  border: 1px solid #e1e1e1;
+  border-top-width: 3px;
+  margin-bottom: 20px;
+  /* margin-right:20px; */
+}
+
+.list_container {
+    padding: 10px 0;
+}
+
+.list_item {
+  display: flex;
+}
+
+.image_container {
+  width: 25%;
+  height: 125px;
+  position: relative;
+  background-color: rgba(165, 198, 288, 0.12);
+  margin-bottom: 15px;
+}
+
+.totals {
+padding: 20px 15px;
+}
+
+.sub_total_group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: .825rem;
+}
+
+.sub_total_text {
+    color: #000;
+    font-weight: 400;
+}
+
+.sub_total_price {
+    font-weight: 900;
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.a_btn {
+    background-color: #333b48;
+    color: #fff;
+
+  /* width: 100%; */
+  font-size: .825rem;
+  margin-bottom: 10px;
+
+  border: 0;
+  text-align: center;
+  padding: 10px 15px;
+  transition: background-color .3s linear;
+}
+
+.policy_item {
+    border-bottom: 1px solid #eee;
+    padding: 20px;
+    color: #888;
+    font-size: .825rem;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.policy_icon {
+    margin-right: 10px;
+} 

@@ -14,10 +14,10 @@ function reducer(state, action) {
     case 'ADD_TO_CART_ITEMS': {
       const newItem = action.payload;
       const existItem = state.cart.cartItems.find(
-        (item) => item.name === newItem.name
+        (item) => item._id === newItem._id
       )
 
-      const cartItems = existItem ? state.cart.cartItems.map((item) => item.name === existItem.name ? newItem : item) : [...state.cart.cartItems, newItem];
+      const cartItems = existItem ? state.cart.cartItems.map((item) => item._id === existItem._id ? newItem : item) : [...state.cart.cartItems, newItem];
 
       Cookies.set('cartItems', JSON.stringify(cartItems));
       

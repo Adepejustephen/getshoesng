@@ -3,33 +3,133 @@
   z-index: 99;
   min-width: 265px;
   background-color: #fff;
-  padding: 1rem ;
+  padding-left: 10px;
+  /* padding: 1rem ; */
 }
 
 .image_container {
-    width: 100%;
-    height: 80px;
-    position: relative;
-    background-color: rgba(165, 198, 288, .12);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+  width: 100%;
+  height: 100px;
+  position: relative;
+  background-color: rgba(165, 198, 288, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.item_info {
+  /* width: 90%; */
+  padding: 0 10px;
+  position: relative;
+}
+
+.delete_icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.725rem;
+  color: #999;
 }
 
 .item_text {
-    display: flex;
-    flex-direction: column;
-    padding-left: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .item_name {
-    font-size: .875rem;
-    text-transform: capitalize;
-    margin-bottom: 5px;
+  font-size: 0.675rem;
+  text-transform: capitalize;
+  margin-bottom: 5px;
 }
 
 .item_price {
-    font-size: .875rem;
-    
+  font-size: 0.875rem;
+}
+
+.list {
+  max-height: none;
+}
+
+.list_item {
+  border-bottom: 1px solid #eee;
+  height: 135px;
+  transition: background-color 0.5s linear;
+  padding: 10px;
+}
+.counter {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 0.825rem;
+  /* justify-content: space-between; */
+  margin-top: 10px;
+}
+
+.counter span {
+  margin: 0 1.2rem;
+  color: #222;
+}
+
+.counter_icon {
+  font-size: 15px;
+  color: #999;
+}
+
+.totals {
+  /* margin-top: 10px; */
+}
+
+.sub_total {
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.sub_total_text {
+  font-size: 0.825rem;
+  color: #999;
+}
+
+.sub_total_price {
+  font-size: 0.825rem;
+  color: #222;
+}
+
+.sub_total_group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-right: 10px;
+}
+
+.btns {
+  display: flex;
+  flex-direction: column;
+}
+
+.a_btn {
+  color: #fff;
+  width: 100%;
+  font-size: .825rem;
+  margin-bottom: 10px;
+  background-color: #ccc;
+  border: 0;
+  text-align: center;
+  padding: 10px 15px;
+  transition: background-color .3s linear;
+}
+
+.a_btn:last-of-type {
+  background: #222;
+  
+}
+
+.a_btn:hover {
+  background-color: #333b48;
+}
+
+.a_btn:last-of-type:hover {
+  background: #eb7025;
+  
 }

@@ -11,7 +11,7 @@
     align-items: center;
     padding: 0 20px;
     width: 100%;
-    position: relative;
+    /* position: relative; */
     
 }
 
@@ -59,15 +59,16 @@
     height: 100%;
     flex: 1;
      justify-content: right;
+     height: 100%;
 }
 
 .icon {
-    font-size: 1.5rem!important;
+    font-size: 1.5rem;
     margin-left: 20px;
     cursor: pointer;
     color: #222;
     height: 100%;
-    /* position: relative; */
+    position: relative;
 }
 
 .icon_container {
@@ -75,45 +76,44 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    /* flex: 1; */
-    /* position: relative; */
-    height: 100%;
-    /* width: 100%; */
+    max-width: max-content;
+    position: relative;
+    height: 80px;
+    width: 100%;
 }
 
 
-.icon_container:nth-of-type(2):hover .user_menu{
-display: inline-block;
-}
+
 
 
 
 .cart_display {
     display: none;
     position: absolute;
-    bottom: -100px;
+    top: 60px;
     right: 100px;
-    /* left: -100px; */
     z-index: 3;
     width: 160px;
     display: none;
     padding: 0;
 } 
 
-.icon_container:last-of-type:hover .cart_display{
+.icon_container:nth-of-type(3):hover .cart_display{
 display: block;
 }
 
 .user_menu {
     position: absolute;
-    right: 80px;
-    bottom: -140px;
-    /* left: -120px; */
-    /* left: -100px; */
+    right: 20px;
+    bottom: -100px;
     z-index: 3;
-    width: 160px;
+    width: 150px;
     display: none;
-    /* text-align: center; */
+    cursor: pointer;
+}
+
+.icon_container:nth-of-type(2):hover .user_menu{
+display: inline-block;
 }
 
 
@@ -122,22 +122,18 @@ display: block;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
-    /* width: 100%; */
     padding: 1rem 0;
     
 }
 
 .user_menu_list_item {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     margin-bottom: 10px;
     color: #999;
     transition: all .3s;
-    /* width: 100%; */
     font-size: 0.75rem;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
 }
 
 .user_menu_list_item:hover {
