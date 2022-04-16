@@ -1,24 +1,3 @@
-.container {
-    width: 100%;
-    padding:20px;
-}
-
-.products_container {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-    justify-content: center;
-    /* align-items: center; */
-}
-
-@media screen and (max-width:768px) {
-    
-    .products_container {
-        grid-template-columns: 1fr;
-    }
-}
-
 .product_wrapper {
     width: 100%;
     height: 100%;
@@ -29,7 +8,7 @@
 
 .image_container {
     position: relative;
-    height: 200px;
+    height: 260px;
     width: 90%;
     margin: 20px auto;
     background-color: rgba(165, 198, 288, .12);

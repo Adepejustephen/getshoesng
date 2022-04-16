@@ -8,6 +8,7 @@ import db from '../../utils/db'
 import Product from '../../models/Product'
 import axios from "axios";
 import {Store} from '../../utils/store'
+import ProductWrapper from "../../components/Product";
 
 
 const Products = (props) => {
@@ -48,48 +49,13 @@ const Products = (props) => {
         </Grid>
         <Grid item xs={12} md={9}>
           <div className={styles.products_container}>
-            {products.map((product) => {
-              return (
-                <div className={styles.product_wrapper} key={product._id}>
-                  <Card elevation={0} variant="outlined">
-                    <div className={styles.image_container}>
-                      <Image
-                        src={product.image[0]}
-                        alt={product.name}
-                        layout="fill"
-                        objectFit="contain"
-                        objectPosition="center"
-                        // priority
-                        loading="lazy"
-                      />
-                      <div className={styles.cart_icon_container}>
-                        <BsCart2
-                          className={styles.cart_icon}
-                          onClick={() => addToCartHandler(product)}
-                        />
-                      </div>
-                    </div>
-                    <CardContent>
-                      <div>
-                        <NextLink
-                          href={`/products/product/${product.slug}`}
-                          passHref
-                        >
-                          <a>
-                            <p className={styles.product_name}>
-                              {product.name}
-                            </p>
-                          </a>
-                        </NextLink>
-                        <h3 className={styles.product_price}>
-                          ${product.price}
-                        </h3>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              );
-            })}
+            {products.map((product) => (
+              <ProductWrapper
+                product={product}
+                handleClick={addToCartHandler}
+                key={product._id}
+              />
+            ))}
           </div>
         </Grid>
       </Grid>

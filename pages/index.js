@@ -1,10 +1,47 @@
+import { useContext, useState } from "react";
 import Head from "next/head";
-import Image from "next/image";
-import { Fragment } from "react";
+// import Image from "next/image";
+import NextLink from "next/link";
 import styles from "../styles/Home.module.css";
-import data from "../utils/data";
+import Product from "../models/Product";
+import db from "../utils/db";
+import { BiPlus } from "react-icons/bi";
+import axios from "axios";
+import { Store } from "../utils/store";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import ProductWrapper from "../components/Product";
 
-export default function Home() {
+export default function Home(props) {
+  const { products } = props;
+  const { dispatch } = useContext(Store);
+  
+
+  const trendingProducts = products.filter(
+    (newProducts) => newProducts.status === "Trending"
+  );
+
+  const filterNewProducts = products.filter(
+    (newProducts) => newProducts.status === "New Products"
+  );
+
+  // const [newProducts, setNewProducts] = useState("");
+
+  const addToCartHandler = async (product) => {
+    const { data } = await axios.get(`/api/products/${product._id}`);
+
+    if (data.countInStock <= 0) {
+      window.alert("Sorry. Product is out of stock");
+    }
+
+    dispatch({
+      type: "ADD_TO_CART_ITEMS",
+      payload: { ...product, quantity: 1 },
+    });
+  };
+
+
+  //  setNewProducts(filterNewProducts);
   return (
     <div className={styles.container}>
       <Head>
@@ -14,10 +51,99 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        {data.products.map((product, id) => (
-          <Image height={200} width= {200} src={product.image[0]} key={id} alt={product.name}/>
-        ))}
+        <section>
+          <div className={styles.title}>
+            <h4>Trending This Week</h4>
+          </div>
+          <Swiper
+            breakpoints={{
+              640: { slidesPerView: 3 },
+              320: { slidesPerView: 1 },
+            }}
+            
+            spaceBetween={30}
+            loop={true}
+          >
+            {trendingProducts.map((product) => (
+              <SwiperSlide key={product._id}>
+                <ProductWrapper
+                  product={product}
+                  handleClick={addToCartHandler}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </section>
+        <NextLink href={"/products"} passHref>
+          <a className={styles.link_all_products}>
+            <BiPlus className={styles.link_all_products_icon} />
+            <span>See all products</span>
+          </a>
+        </NextLink>
+
+        <section className={styles.new_products}>
+          <div className={styles.title}>
+            <h4>New Products</h4>
+          </div>
+          <div className={styles.products_container}>
+            {filterNewProducts.map((product) => (
+              <ProductWrapper
+                product={product}
+                handleClick={addToCartHandler}
+                key={product._id}
+              />
+              // <div key={product._id} className={styles.product_wrapper}>
+              //   <Card elevation={0} variant="outlined">
+              //     <div className={styles.image_container}>
+              //       <Image
+              //         src={product.image[0]}
+              //         alt={product.name}
+              //         layout="fill"
+              //         objectFit="contain"
+              //         objectPosition="center"
+              //         // priority
+              //         loading="lazy"
+              //       />
+              //       <div className={styles.cart_icon_container}>
+              //         <BsCart2
+              //           className={styles.cart_icon}
+              //           onClick={() => addToCartHandler(product)}
+              //         />
+              //       </div>
+              //     </div>
+              //     <CardContent>
+              //       <div className={styles.product_info}>
+              //         <NextLink
+              //           href={`/products/product/${product.slug}`}
+              //           passHref
+              //         >
+              //           <a>
+              //             <p className={styles.product_name}>{product.name}</p>
+              //           </a>
+              //         </NextLink>
+              //         <h3 className={styles.product_price}>${product.price}</h3>
+              //       </div>
+              //     </CardContent>
+              //   </Card>
+              // </div>
+            ))}
+          </div>
+        </section>
       </main>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  await db.connect();
+
+  const products = await Product.find({}).lean();
+
+  await db.disconnect();
+
+  return {
+    props: {
+      products: products.map(db.converDocToObj),
+    },
+  };
 }
