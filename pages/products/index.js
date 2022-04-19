@@ -1,8 +1,5 @@
 import { useContext } from "react";
-import { Grid, Card, CardContent } from "@mui/material";
-import NextLink from "next/link";
-import Image from "next/image";
-import {BsCart2} from 'react-icons/bs'
+import { Grid } from "@mui/material";
 import styles from "../../styles/pages/Products.module.css";
 import db from '../../utils/db'
 import Product from '../../models/Product'

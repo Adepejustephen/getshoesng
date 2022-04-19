@@ -17,8 +17,6 @@ const ProductWrapper = ({ handleClick, product }) => {
             layout="fill"
             objectFit="contain"
             objectPosition="center"
-            // priority
-            loading="lazy"
           />
           <div className={styles.cart_icon_container}>
             <BsCart2

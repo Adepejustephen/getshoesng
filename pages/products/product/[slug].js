@@ -5,6 +5,7 @@ import Product from "../../../models/Product";
 import db from "../../../utils/db";
 import { Grid } from "@mui/material";
 import { Store } from "../../../utils/store";
+import styles from '../../../styles/pages/Product.module.css'
 
 const ProductScreen = (props) => {
 
@@ -26,7 +27,7 @@ const ProductScreen = (props) => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <Grid container>
         <Grid item xs={12} md={6}>
           <Image
@@ -39,11 +40,40 @@ const ProductScreen = (props) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <div>
-            <h2>{product.name}</h2>
-            <p>{product.desc}</p>
+            <div>
+              <h2>{product.name}</h2>
+              <p>{product.desc}</p>
+            </div>
+            <div className={styles.box_container}>
+              <ul>
+                <li className={styles.box_list_item}>
+                  <span>Price</span>
+                  <span>${product.price}</span>
+                </li>
+                <li className={styles.box_list_item}>
+                  <span>Available Color</span>
+                  <span>{product.color}</span>
+                </li>
+                <li className={styles.box_list_item}>
+                  <span>Reviews</span>
+                  <span>{product.numReviews} reviews</span>
+                </li>
+                <li className={styles.box_list_item}>
+                  <span>Quantity</span>
+                  <select name="count in stock">
+                    {[...Array(product.countInStcock).keys()].map((x) => (
+                      <option key={x + 1} value={x + 1}>
+                        {x + 1}
+                      </option>
+                    ))}
+                  </select>
+                </li>
+              </ul>
+            </div>
 
             <button
               onClick={() => addToCartHandler(product)}
+              className={styles.add_cart_btn}
             >
               ADD TO CART
             </button>
