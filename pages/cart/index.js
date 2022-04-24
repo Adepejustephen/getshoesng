@@ -5,19 +5,52 @@ import Image from "next/image";
 import styles from "../../styles/pages/Cart.module.css";
 import { Store } from "../../utils/store";
 import { Grid } from "@mui/material";
-import { BiMinus, BiPlus } from "react-icons/bi";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { MdOutlineChevronLeft, MdDelete } from "react-icons/md";
 import GppGoodOutlinedIcon from "@mui/icons-material/GppGoodOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import SwapHorizOutlinedIcon from "@mui/icons-material/SwapHorizOutlined";
+import axios from "axios";
 
 const Cart = () => {
-     const { state } = useContext(Store);
+     const { state, dispatch } = useContext(Store);
      const {
        cart: { cartItems },
      } = state;
      const [count, setCount] = useState(1);
-     const [shippingPrice, setShippingPrice] = useState(5);
+  const [shippingPrice, setShippingPrice] = useState(5);
+
+  const removeHandler = (item) => {
+
+    dispatch({type: 'CART_REMOVE_ITEM', payload: item})
+  }
+
+  const decrease = (e) => {
+    if (count <= 1) {
+      return;
+    }
+    setCount(count - 1);
+  };
+
+  // const preventMinus = (e) => {
+  //   if (e.code === "Minus") {
+  //     e.preventDefault();
+  //   }
+  // };
+
+  const updateCart = async (item, quantity) => {
+    const { data } = await axios.get(`/api/products/${item._id}`);
+
+    if (data.countInStock <= 1) {
+      window.alert("Sorry. Product is out of stock");
+    }
+
+    dispatch({
+      type: "ADD_TO_CART_ITEMS",
+      payload: { ...item, quantity },
+    });
+  }; 
+
   return (
     <div className={styles.container}>
       <Grid container spacing={2}>
@@ -32,32 +65,66 @@ const Cart = () => {
                   {cartItems.map((item) => {
                     return (
                       <li key={item._id} className={styles.list_item}>
-                        <div className={styles.image_container}>
-                          <Image
-                            src={item.image[0]}
-                            alt={item.name}
-                            layout="fill"
-                            objectFit="contain"
-                            objectPosition="center"
-                            priority
-                          />
-                        </div>
-
-                        <div className={styles.item_info}>
-                          <div className={styles.item_text}>
-                            <span className={styles.item_name}>
-                              {item.name}
-                            </span>
-                            <span className={styles.item_price}>
-                              ${item.price}
-                            </span>
-                            <MdDelete className={styles.delete_icon} />
+                        <div className={styles.group}>
+                          <div className={styles.image_container}>
+                            <Image
+                              src={item.image[0]}
+                              alt={item.name}
+                              layout="fill"
+                              objectFit="contain"
+                              objectPosition="center"
+                              priority
+                            />
                           </div>
-                          <div className={styles.counter}>
-                            <BiMinus className={styles.counter_icon} />
-                            {/* <input type='text' value={count} /> */}
+                          <div className={styles.item_info}>
+                            <div className={styles.item_text}>
+                              <span className={styles.item_name}>
+                                {item.name}
+                              </span>
+                              <span className={styles.item_price}>
+                                ${item.price}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className={styles.group}>
+                          <div className={styles.update_count}>
+                            <div className={styles.counter}>
+                              {/* <BiMinus className={styles.counter_icon} />
                             <span>{count}</span>
-                            <BiPlus className={styles.counter_icon} />
+                            <BiPlus className={styles.counter_icon} /> */}
+                              <input
+                                min={1}
+                                name="product quantity"
+                                type="number"
+                                // value={count}
+                                // disabled
+
+                                onChange={(e) =>
+                                  updateCart(item, e.target.value)
+                                }
+                              />
+                              <div className={styles.count_btns}>
+                                <MdKeyboardArrowUp
+                                  className={styles.count_btn}
+                                  onClick={() => setCount((up) => up + 1)}
+                                />
+                                <MdKeyboardArrowDown
+                                  className={styles.count_btn}
+                                  onClick={decrease}
+                                />
+                              </div>
+                            </div>
+                            <div className={styles.add_price}>
+                              <span>${item.price}</span>
+                            </div>
+                          </div>
+                          <div className={styles.delete_icon}>
+                            <MdDelete
+                              onClick={() => {
+                                removeHandler(item);
+                              }}
+                            />
                           </div>
                         </div>
                       </li>
@@ -73,7 +140,6 @@ const Cart = () => {
           </div>
           <NextLink href={"/products"} passHref>
             <a className={styles.link_back}>
-              {" "}
               <MdOutlineChevronLeft /> Continue shopping
             </a>
           </NextLink>
