@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import NextLink from 'next/link'
+import NextLink from "next/link";
 import Image from "next/image";
 import axios from "axios";
 import Product from "../../../models/Product";
@@ -7,24 +7,24 @@ import db from "../../../utils/db";
 import { Grid } from "@mui/material";
 import { BiArrowBack } from "react-icons/bi";
 import { Store } from "../../../utils/store";
-import styles from '../../../styles/pages/Product.module.css'
+import styles from "../../../styles/pages/Product.module.css";
 
 const ProductScreen = (props) => {
-
   const { product } = props;
 
-  const {dispatch} = useContext(Store)
+  const { state, dispatch } = useContext(Store);
 
   const addToCartHandler = async () => {
+    const existItem = state.cart.cartItems.find((x) => x._id === product._id);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${product._id}`);
-
-    if (data.countInStock <= 0) {
+    if (data.countInStock < quantity) {
       window.alert("Sorry. Product is out of stock");
     }
 
     dispatch({
       type: "ADD_TO_CART_ITEMS",
-      payload: { ...product, quantity: 1 },
+      payload: { ...product, quantity },
     });
   };
 

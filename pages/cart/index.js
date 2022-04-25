@@ -11,8 +11,10 @@ import GppGoodOutlinedIcon from "@mui/icons-material/GppGoodOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import SwapHorizOutlinedIcon from "@mui/icons-material/SwapHorizOutlined";
 import axios from "axios";
+// import { useRouter } from "next/router";
 
 const Cart = () => {
+  // const router = useRouter
      const { state, dispatch } = useContext(Store);
      const {
        cart: { cartItems },
@@ -41,7 +43,11 @@ const Cart = () => {
   const updateCart = async (item, quantity) => {
     const { data } = await axios.get(`/api/products/${item._id}`);
 
-    if (data.countInStock <= 1) {
+    // if (data.countInStock <= 1) {
+    //   window.alert("Sorry. Product is out of stock");
+    // }
+
+    if (data.countInStock < quantity) {
       window.alert("Sorry. Product is out of stock");
     }
 
@@ -97,7 +103,7 @@ const Cart = () => {
                                 min={1}
                                 name="product quantity"
                                 type="number"
-                                // value={count}
+                                value={count}
                                 // disabled
 
                                 onChange={(e) =>
@@ -175,7 +181,7 @@ const Cart = () => {
               </div>
             </div>
             <div className={styles.btns}>
-              <NextLink href={"/checkout"} passHref>
+              <NextLink href={"/shipping"} passHref>
                 <a className={styles.a_btn}>PROCEED TO CHECKOUT</a>
               </NextLink>
             </div>

@@ -74,7 +74,7 @@ const Header = () => {
                 <Card variant="outlined">
                   <ul className={styles.user_menu_list}>
                     <li className={styles.user_menu_list_item}>
-                      <NextLink href={"/auth/sigin-in"} passHref>
+                      <NextLink href={"/auth/login"} passHref>
                         <a>
                           <TiLockClosed className={styles.user_menu_icon} />
                           <span>Sign in</span>
