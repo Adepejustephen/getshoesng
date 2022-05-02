@@ -9,32 +9,49 @@ const initialState = {
       ? JSON.parse(Cookies.get("cartItems"))
       : [],
   },
+  userInfo: Cookies.get("userInfoo")
+    ? JSON.parse(Cookies.get("userInfo"))
+    : null,
 };
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'ADD_TO_CART_ITEMS': {
+    case "ADD_TO_CART_ITEMS": {
       const newItem = action.payload;
       const existItem = state.cart.cartItems.find(
         (item) => item._id === newItem._id
-      )
+      );
 
-      const cartItems = existItem ? state.cart.cartItems.map((item) => item._id === existItem._id ? newItem : item) : [...state.cart.cartItems, newItem];
+      const cartItems = existItem
+        ? state.cart.cartItems.map((item) =>
+            item._id === existItem._id ? newItem : item
+          )
+        : [...state.cart.cartItems, newItem];
 
       // Cookies.set('cartItems', JSON.stringify(cartItems));
       Cookies.set("cartItems", JSON.stringify(cartItems));
-      
-      return {...state, cart: {...state.cart, cartItems}}
-    }
-    case 'CART_REMOVE_ITEM': {
-      const cartItems = state.cart.cartItems.filter(item => item._id !== action.payload._id)
-      // Cookies.set("cartItems", JSON.stringify(cartItems));
-       Cookies.set("cartItems", JSON.stringify(cartItems));
 
-        return { ...state, cart: { ...state.cart, cartItems } };
-      }
+      return { ...state, cart: { ...state.cart, cartItems } };
+    }
+      
+    case "CART_REMOVE_ITEM": {
+      const cartItems = state.cart.cartItems.filter(
+        (item) => item._id !== action.payload._id
+      );
+      // Cookies.set("cartItems", JSON.stringify(cartItems));
+      Cookies.set("cartItems", JSON.stringify(cartItems));
+
+      return { ...state, cart: { ...state.cart, cartItems } };
+    }
+      
+    case "USER_LOGIN":
+      return { ...state, userInfo: action.payload };
+    
+    case "LOGOUT_USER":
+      return { ...state, userInfo: null, cart: {cartItems: []} };
+    
     default:
-      return state
+      return state;
   }
 }
 

@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import Cookies from "js-cookie";
 import NextLink from "next/link";
 import Carousel from "../Carousel";
 import styles from "../../styles/components/Header.module.css";
@@ -9,11 +10,13 @@ import { AiOutlineUser } from "react-icons/ai";
 import { TiLockClosed } from "react-icons/ti";
 import { HiOutlineUser } from "react-icons/hi";
 import { MdExitToApp } from "react-icons/md";
+import { BiUserCircle } from "react-icons/bi";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import { Card } from "@mui/material";
 import { Store } from "../../utils/store";
 import CartList from '../CartList'
+import { useRouter } from "next/router";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -34,8 +37,17 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 const Header = () => {
 
-  const { state} = useContext(Store);
-  const { cart } = state;
+  const { state ,dispatch} = useContext(Store);
+  const { cart, userInfo } = state;
+  const router = useRouter()
+
+  const logOutHandler = () => {
+    dispatch({ type: 'LOGOUT_USER' })
+    Cookies.remove('userInfo')
+    Cookies.remove('cartItems');
+    router.push('/')
+    
+  }
 
   return (
     <header className={styles.header}>
@@ -74,12 +86,29 @@ const Header = () => {
                 <Card variant="outlined">
                   <ul className={styles.user_menu_list}>
                     <li className={styles.user_menu_list_item}>
-                      <NextLink href={"/auth/login"} passHref>
-                        <a>
-                          <TiLockClosed className={styles.user_menu_icon} />
-                          <span>Sign in</span>
-                        </a>
-                      </NextLink>
+                      {userInfo ? (
+                        <NextLink href={"/account"} passHref>
+                          <a>
+                            <BiUserCircle className={styles.user_menu_icon} />
+                            <span>{userInfo.name}</span>
+                          </a>
+                        </NextLink>
+                      ) : null}
+                    </li>
+                    <li className={styles.user_menu_list_item}>
+                      {userInfo ? (
+                        <span onClick={logOutHandler}>
+                          <BiUserCircle className={styles.user_menu_icon} />
+                          <span>Sign out</span>
+                        </span>
+                      ) : (
+                        <NextLink href={"/auth/login"} passHref>
+                          <a>
+                            <TiLockClosed className={styles.user_menu_icon} />
+                            <span>Sign in</span>
+                          </a>
+                        </NextLink>
+                      )}
                     </li>
                     <li className={styles.user_menu_list_item}>
                       <NextLink href={"/account"} passHref>

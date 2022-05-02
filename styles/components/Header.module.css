@@ -105,7 +105,7 @@ display: block;
 .user_menu {
     position: absolute;
     right: 20px;
-    bottom: -100px;
+    bottom: -120px;
     z-index: 3;
     width: 150px;
     display: none;

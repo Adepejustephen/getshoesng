@@ -19,48 +19,52 @@ const CartList = () => {
     <div>
       {cartItems.length >= 1 ? (
         <div className={styles.container}>
-          <ul className={styles.list}>
-            {cartItems.map((item) => {
-              return (
-                <li key={item._id} className={styles.list_item}>
-                  <Grid container>
-                    <Grid item xs={3}>
-                      <div className={styles.image_container}>
-                        <Image
-                          src={item.image[0]}
-                          alt={item.name}
-                          layout="fill"
-                          objectFit="contain"
-                          objectPosition="center"
-                          priority
-                        />
-                      </div>
-                    </Grid>
-                    <Grid item xs={9}>
-                      <div className={styles.item_info}>
-                        <div className={styles.item_text}>
-                          <span className={styles.item_name}>{item.name}</span>
-                          <span className={styles.item_price}>
-                            ${item.price}
-                          </span>
+          <div>
+            <ul className={styles.list}>
+              {cartItems.map((item) => {
+                return (
+                  <li key={item._id} className={styles.list_item}>
+                    <Grid container>
+                      <Grid item xs={3}>
+                        <div className={styles.image_container}>
+                          <Image
+                            src={item.image[0]}
+                            alt={item.name}
+                            layout="fill"
+                            objectFit="contain"
+                            objectPosition="center"
+                            priority
+                          />
                         </div>
-                        <div className={styles.counter}>
-                          <BiMinus className={styles.counter_icon} />
-                          {/* <input type='text' value={count} /> */}
-                          <span>{count}</span>
-                          <BiPlus className={styles.counter_icon} />
+                      </Grid>
+                      <Grid item xs={9}>
+                        <div className={styles.item_info}>
+                          <div className={styles.item_text}>
+                            <span className={styles.item_name}>
+                              {item.name}
+                            </span>
+                            <span className={styles.item_price}>
+                              ${item.price}
+                            </span>
+                          </div>
+                          <div className={styles.counter}>
+                            <BiMinus className={styles.counter_icon} />
+                            {/* <input type='text' value={count} /> */}
+                            <span>{count}</span>
+                            <BiPlus className={styles.counter_icon} />
+                          </div>
                         </div>
-                      </div>
 
-                      <div>
-                        <FaTimes className={styles.delete_icon} />
-                      </div>
+                        <div>
+                          <FaTimes className={styles.delete_icon} />
+                        </div>
+                      </Grid>
                     </Grid>
-                  </Grid>
-                </li>
-              );
-            })}
-          </ul>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
 
           <div className={styles.totals}>
             <div className={styles.sub_total}>
