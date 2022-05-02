@@ -19,7 +19,7 @@ const [name, setName] = useState('');
   const [confirmPassword, setConfirmPassword] = useState("");
   
   const {
-    handleSubmit,
+    handleSubmit,control,
     formState: { errors },
   } = useForm();
   

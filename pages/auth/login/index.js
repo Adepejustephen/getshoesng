@@ -9,7 +9,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { useSnackbar } from 'notistack';
 
 const Login = () => {
-  const { handleSubmit, formState: { errors } } = useForm();
+  const { handleSubmit, control, formState: { errors } } = useForm();
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
 
