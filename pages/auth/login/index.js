@@ -13,8 +13,6 @@ const Login = () => {
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
 
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
 
   const router = useRouter();
   const { redirect } = router.query;
@@ -35,14 +33,13 @@ const Login = () => {
     closeSnackbar()
 
     try {
-      const { data } = await axios.post("/api/users/login", {
+      const { data } = await axios.post("/api/users/register", {
         email,
         password,
       });
 
       dispatch({ type: "USER_LOGIN", payload: data });
-
-      Cookies.set("userInfo", data);
+      Cookies.set('userInformation', data);
 
       router.push(redirect || "/");
       enqueueSnackbar('login successful', {variant: 'success'})
@@ -71,25 +68,32 @@ const Login = () => {
               defaultValue=""
               rules={{
                 required: true,
-                patter: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
               }}
               render={({ field }) => (
                 <input
                   type="email"
                   placeholder="your@email.com"
+                  control={control}
+                  inputProps={{ type: "email" }}
                   error={Boolean(errors.email)}
-                  helperText={
-                    errors.email
-                      ? errors.email.type === "pattern"
-                        ? "Email is not valid"
-                        : "Email is required"
-                      : ""
-                  }
-                  // onChange={(e) => setEmail(e.target.value)}
                   {...field}
                 />
               )}
             ></Controller>
+            {errors.email ? (
+              errors.email.type === "pattern" ? (
+                <span style={{ color: "red", fontSize: 12 }}>
+                  Email is not valid
+                </span>
+              ) : (
+                <span style={{ color: "red", fontSize: 12 }}>
+                  Email is required
+                </span>
+              )
+            ) : (
+              ""
+            )}
           </div>
           <div className={styles.form_item}>
             <label htmlFor="email">Password</label>
@@ -106,18 +110,24 @@ const Login = () => {
                   type="password"
                   placeholder="password"
                   error={Boolean(errors.password)}
-                  helperText={
-                    errors.password
-                      ? errors.password.type === "minLength"
-                        ? "password length is less than 5"
-                        : "password is required"
-                      : ''
-                  }
-                  // onChange={(e) => setEmail(e.target.value)}
+          
                   {...field}
                 />
               )}
             ></Controller>
+            {errors.password ? (
+              errors.password.type === "minLength" ? (
+                <span style={{ color: "red", fontSize: 12 }}>
+                  password is less than 5
+                </span>
+              ) : (
+                <span style={{ color: "red", fontSize: 12 }}>
+                  password is required
+                </span>
+              )
+            ) : (
+              ""
+            )}
             {/* <input
               type="password"
               placeholder="password"

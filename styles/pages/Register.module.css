@@ -40,6 +40,18 @@ width: 100%;
     font-weight: 400;
 }
 
+.form_item >input::placeholder {
+  font-weight:300;
+}
+
+.form_item >input:-ms-input-placeholder {
+ font-weight:300;
+}
+
+.form_item > input::-webkit-input-placeholder {
+  font-weight:300;
+}
+
 .form_item > button {
     line-height: 40px;
     cursor: pointer;

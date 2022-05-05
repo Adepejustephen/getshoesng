@@ -55,9 +55,11 @@ const Header = () => {
         <div className={styles.group}>
           <div className={styles.title}>
             <NextLink href={"/"} passHref>
-              <h2>
-                GETSHOESNG <span>.</span>
-              </h2>
+              <a>
+                <h2>
+                  GETSHOESNG <span>.</span>
+                </h2>
+              </a>
             </NextLink>
           </div>
           <ul className={styles.links}>
