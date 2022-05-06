@@ -1,6 +1,6 @@
 .container {
     width: 100%;
-    min-height: 70vh;
+    /* min-height: 70vh; */
 }
 
 		.MuiStepLabel-label.Mui-active{
@@ -16,15 +16,25 @@
     
 }
 
-.form_container > h3 {
-    margin-bottom: 40px;
-    font-size: 2rem;
-    font-weight: 700;
+.form{
+  box-shadow: 1px 3px 1px rgb(50 50 50 / 4%);
+  border: 1px solid #e1e1e1;
+  border-top-width: 3px;
+  margin-bottom: 20px;
+  /* margin-right:20px; */
+}
+
+.form span {
+    margin-bottom: 20px;
+    font-size: .725rem;
+    font-weight: 400;
+   
 }
 
 .form {
-max-width: 600px;
+max-width: 70%;
 width: 100%;
+ padding: 20px 30px;
 }
 
 .form_item {
@@ -99,3 +109,59 @@ color: coral;
         max-width: 100%;
     }
 }
+
+.totals {
+padding: 20px 15px;
+}
+
+.sub_total_group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: .825rem;
+}
+
+.sub_total_text {
+    color: #000;
+    font-weight: 400;
+}
+
+.sub_total_price {
+    font-weight: 900;
+}
+
+.policy_item {
+    border-bottom: 1px solid #eee;
+    padding: 20px;
+    color: #888;
+    font-size: .825rem;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.policy_icon {
+    margin-right: 10px;
+} 
+
+.item_info {
+  width: 45%;
+}
+
+.item_text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+ 
+
+@media screen and (max-width:768px) {
+  .list_item {
+    flex-direction: column;
+  }
+  
+  .update_count {
+    flex-direction: column;
+  }
+}
+

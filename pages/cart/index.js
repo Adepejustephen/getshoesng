@@ -181,7 +181,7 @@ const Cart = () => {
               </div>
             </div>
             <div className={styles.btns}>
-              <NextLink href={"/shipping"} passHref>
+              <NextLink href={"/shippingaddress"} passHref>
                 <a className={styles.a_btn}>PROCEED TO CHECKOUT</a>
               </NextLink>
             </div>
