@@ -39,7 +39,8 @@ const Login = () => {
       });
 
       dispatch({ type: "USER_LOGIN", payload: data });
-      Cookies.set('userInformation', data);
+      // Cookies.set('userInformation', data);
+       Cookies.set("userInformation", data);
 
       router.push(redirect || "/");
       enqueueSnackbar('login successful', {variant: 'success'})

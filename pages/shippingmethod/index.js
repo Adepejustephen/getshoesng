@@ -1,34 +1,35 @@
 import { useRouter } from "next/router";
+import Image from 'next/image'
 import { useContext, useEffect, useState } from "react";
-import styles from "../../styles/pages/Shipping.module.css";
+import styles from "../../styles/pages/ShippingMethod.module.css";
 import { Store } from "../../utils/store";
 import Cookies from "js-cookie";
-import { Controller, useForm } from "react-hook-form";
+// import { Controller, useForm } from "react-hook-form";
 import { CheckOutWizard } from "../../components";
 import {
-  FormControl,
-  FormControlLabel,
-  Grid,
-  Radio,
-  RadioGroup,
+Grid
+
 } from "@mui/material";
-import { FaDhl } from "react-icons/fa";
+
+
+
 
 import { Totals } from "../../components";
 import { useSnackbar } from "notistack";
 
+
+
 const ShippingMethod = () => {
   const [shippingMethod, setShippingMethod] = useState("");
   const { state, dispatch } = useContext(Store);
-  const {
-    userInfo,
+  const { 
     cart: { shippingAddress, cartItems },
   } = state;
 
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const router = useRouter();
-  // const { redirect } = router.query;
+
 
   useEffect(() => {
     if (!shippingAddress.address) {
@@ -50,15 +51,18 @@ const ShippingMethod = () => {
     } else {
       dispatch({
         type: "SAVE_SHIPPING_METHOD",
-        payload: { shippingMethod },
+        payload:  shippingMethod
       });
 
-        Cookies.set("shippingAddress", shippingMethod);
-        router.push("/");
+        Cookies.set("shippingMethod", shippingMethod);
+        router.push("/placeorder");
     }
 
     
   };
+
+
+
   return (
     <section className={styles.container}>
       <Grid container spacing={3}>
@@ -67,32 +71,42 @@ const ShippingMethod = () => {
           <div className={styles.form_container}>
             <form action="" className={styles.form} onSubmit={submitHandler}>
               <div className={styles.form_item}>
-                <FormControl component="fieldset">
-                  <RadioGroup
-                    aria-label="Payment Method"
-                    name="paymentMethod"
-                    value={ShippingMethod}
-                    onChange={(e) => setShippingMethod(e.target.value)}
-                  >
-                    <FormControlLabel
-                      label="PayPal"
-                      value="PayPal"
-                      control={<Radio />}
-                    ></FormControlLabel>
-                    <FormControlLabel
-                      label="Stripe"
-                      value="Stripe"
-                      control={<Radio />}
-                    ></FormControlLabel>
-                    <FormControlLabel
-                      label="Cash"
-                      value="Cash"
-                      control={<Radio />}
-                    ></FormControlLabel>
-                  </RadioGroup>
-                </FormControl>
-                {/* <input type="radio" aria-label="dhl" value={shippingMethod} onChange={ (e) => setShippingMethod(e.target.value)}/>
-                <label htmlFor="Full Name"><FaDhl/><span>DHL</span></label> */}
+                <div className={styles.form_item_item}>
+                  <label html-hfor="dhl">
+                    <input
+                      type="radio"
+                      aria-label="DHL"
+                      name="payment"
+                      value={shippingMethod ? shippingMethod : "DHL"}
+                      onChange={(e) => setShippingMethod(e.target.value)}
+                    />
+                    <Image
+                      src="/images/svgs/dhl.svg"
+                      alt="dhl_logo"
+                      width={40}
+                      height={40}
+                    />
+                    <span>DHL</span>
+                  </label>
+                </div>
+                <div className={styles.form_item_item}>
+                  <label html-hfor="ups">
+                    <input
+                      type="radio"
+                      aria-label="UPS"
+                      name="payment"
+                      value={shippingMethod ? shippingMethod : "UPS"}
+                      onChange={(e) => setShippingMethod(e.target.value)}
+                    />
+                    <Image
+                      src="/images/svgs/ups.svg"
+                      alt="ups_logo"
+                      width={40}
+                      height={40}
+                    />
+                    <span>UPS</span>
+                  </label>
+                </div>
               </div>
               <div className={styles.form_item}>
                 <button type="submit">Continue</button>

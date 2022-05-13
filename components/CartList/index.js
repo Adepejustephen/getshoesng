@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import NextLink from 'next/link'
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import styles from "../../styles/components/Cart.module.css";
 import { Store } from "../../utils/store";
@@ -104,4 +105,5 @@ const CartList = () => {
   );
 };
 
-export default CartList;
+// export default CartList;
+export default dynamic(() => Promise.resolve(CartList), { ssr: false });

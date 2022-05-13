@@ -43,7 +43,7 @@ const Header = () => {
 
   const logOutHandler = () => {
     dispatch({ type: 'LOGOUT_USER' })
-    Cookies.remove('userInfo')
+    Cookies.remove("userInformation");
     Cookies.remove('cartItems');
     router.push('/')
     
@@ -141,16 +141,15 @@ const Header = () => {
               </div>
             </div>
             <div className={styles.icon_container}>
-              <StyledBadge
-                badgeContent={
-                  cart.cartItems.length < 1 ? "0" : cart.cartItems.length
-                }
-              >
-                <BsCart2 className={styles.icon} />
-                <div className={styles.cart_display}>
-                  <CartList />
-                </div>
-              </StyledBadge>
+              <NextLink href={"/cart"} passHref>
+                <StyledBadge
+                  badgeContent={
+                    cart.cartItems.length < 1 ? 0 : cart.cartItems.length
+                  }
+                >
+                  <BsCart2 className={styles.icon} />
+                </StyledBadge>
+              </NextLink>
             </div>
 
             {/* <SearchOffOutlined/> */}

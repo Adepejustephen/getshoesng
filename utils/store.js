@@ -7,32 +7,21 @@ const initialState = {
     cartItems: Cookies.get("cartItems")
       ? JSON.parse(Cookies.get("cartItems"))
       : [],
-    shippingAddress: Cookies.get("shippingAddresss")
+    shippingAddress: Cookies.get("shippingAddress")
       ? JSON.parse(Cookies.get("shippingAddress"))
       : {},
     shippingMethod: Cookies.get("shippingMethod")
-      ? Cookies.get("shippingtMethod")
+      ? Cookies.get("shippingMethod")
       : "",
   },
-  userInfo: Cookies.get("userInformationn")
+  userInfo: Cookies.get("userInformation")
     ? JSON.parse(Cookies.get("userInformation"))
     : null,
-  // ? JSON.parse(Cookies.get("userInfo"))
-  // : null,
+
 };
 
 
-// const initialState = {
-//   cart: {
-//     cartItems: Cookies.get("cartItems")
-//       ? JSON.parse(Cookies.get("cartItems"))
-//       : [],
-//   },
-//   userInfo: Cookies.get("userInfo")
-//     ? JSON.parse(Cookies.get("userInfo"))
-//     : null,
 
-// };
 
 function reducer(state, action) {
   switch (action.type) {
@@ -79,7 +68,7 @@ function reducer(state, action) {
       return { ...state, userInfo: action.payload };
 
     case "LOGOUT_USER":
-      return { ...state, userInfo: null, cart: { cartItems: [] } };
+      return { ...state, userInfo: null, cart: { cartItems: [], shippingAddress: {}, shippingMethod: '' } };
 
     default:
       return state;

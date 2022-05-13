@@ -34,7 +34,7 @@ const ShippingAddress = () => {
     if (!userInfo) {
       router.push("/auth/login?redirect=/shippingaddress");
     }
-    setValue("fullName", shippingAddress.name);
+    setValue("fullName", shippingAddress.fullName);
     setValue("email", shippingAddress.email);
     setValue("address", shippingAddress.address);
     setValue("city", shippingAddress.city);
@@ -102,9 +102,9 @@ const ShippingAddress = () => {
               <div className={styles.form_item}>
                 <label htmlFor="Full Name">Full Name</label>
                 <Controller
-                  name="name"
+                  name="fullName"
                   control={control}
-                  defaultValue={userInfo ? userInfo.name : ""}
+                  defaultValue=""
                   rules={{
                     required: true,
                   }}
@@ -139,7 +139,7 @@ const ShippingAddress = () => {
                 <Controller
                   name="email"
                   control={control}
-                  defaultValue={userInfo ? userInfo.email : ""}
+                  defaultValue=""
                   rules={{
                     required: true,
                     pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
