@@ -52,7 +52,7 @@ const Register = () => {
 
        dispatch({ type: "USER_LOGIN", payload: data });
       //  Cookies.set('userInformation', data);
-       Cookies.set("userInformation", data);
+       Cookies.set("userInfo", data);
 
       router.push(redirect || "/");
 

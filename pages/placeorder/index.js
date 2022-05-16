@@ -139,7 +139,7 @@ const PlaceOrder = () => {
                     onClick={() => router.push("/shippingmethod")}
                   />
                 </h4>
-                {shippingMethod === "dhl" ? (
+                {shippingMethod === "DHL" ? (
                   <div>
                     <Image
                       src="/images/svgs/dhl.svg"

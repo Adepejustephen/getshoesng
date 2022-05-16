@@ -8,16 +8,15 @@ const initialState = {
       ? JSON.parse(Cookies.get("cartItems"))
       : [],
     shippingAddress: Cookies.get("shippingAddress")
-      ? JSON.parse(Cookies.get("shippingAddress"))
+      ? JSON.stringify(Cookies.get("shippingAddress"))
       : {},
     shippingMethod: Cookies.get("shippingMethod")
       ? Cookies.get("shippingMethod")
       : "",
   },
-  userInfo: Cookies.get("userInformation")
-    ? JSON.parse(Cookies.get("userInformation"))
-    : null,
-
+  userInfo: Cookies.get("userInfo")
+    ? JSON.parse(JSON.stringify(Cookies.get("userInfo")))
+    : "",
 };
 
 
