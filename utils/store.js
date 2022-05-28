@@ -7,17 +7,21 @@ const initialState = {
     cartItems: Cookies.get("cartItems")
       ? JSON.parse(Cookies.get("cartItems"))
       : [],
-    shippingAddress: Cookies.get("shippingAddress")
-      ? JSON.stringify(Cookies.get("shippingAddress"))
+    shippingAddress: Cookies.get("shippingAddresss")
+      ? JSON.parse(Cookies.get("shippingAddress"))
       : {},
     shippingMethod: Cookies.get("shippingMethod")
       ? Cookies.get("shippingMethod")
       : "",
   },
-  userInfo: Cookies.get("userInfo")
-    ? JSON.parse(JSON.stringify(Cookies.get("userInfo")))
-    : "",
+  userInfo: Cookies.get("userInfoo")
+    ? JSON.parse(Cookies.get("userInfo"))
+    : null,
 };
+
+console.log(initialState.userInfo);
+console.log(initialState.cart.cartItems);
+console.log(initialState.cart.shippingAddress);
 
 
 

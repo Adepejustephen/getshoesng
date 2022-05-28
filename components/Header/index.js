@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Cookies from "js-cookie";
 import NextLink from "next/link";
 import Carousel from "../Carousel";
@@ -6,7 +6,9 @@ import styles from "../../styles/components/Header.module.css";
 import menus from "./menus";
 import { BsCart2 } from "react-icons/bs";
 import { IoSearchOutline } from "react-icons/io5";
-import { AiOutlineUser } from "react-icons/ai";
+import { AiOutlineUser, AiOutlineMenu } from "react-icons/ai";
+import { FaTimes } from "react-icons/fa";
+// import { BiMenu } from "react-icons/bi";
 import { TiLockClosed } from "react-icons/ti";
 import { HiOutlineUser } from "react-icons/hi";
 import { MdExitToApp } from "react-icons/md";
@@ -15,7 +17,7 @@ import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import { Card } from "@mui/material";
 import { Store } from "../../utils/store";
-import CartList from '../CartList'
+// import CartList from '../CartList'
 import { useRouter } from "next/router";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -41,6 +43,8 @@ const Header = () => {
   const { cart, userInfo } = state;
   const router = useRouter()
 
+  const [openMenu, setOpenMenu] = useState(false)
+
   const logOutHandler = () => {
     dispatch({ type: 'LOGOUT_USER' })
     Cookies.remove("userInformation");
@@ -57,7 +61,7 @@ const Header = () => {
             <NextLink href={"/"} passHref>
               <a>
                 <h2>
-                  GETSHOESNG <span>.</span>
+                  MENSHOESNG <span>.</span>
                 </h2>
               </a>
             </NextLink>
@@ -74,9 +78,11 @@ const Header = () => {
             })}
           </ul>
         </div>
-        {/* <div className={styles.group}>
-          
-        </div> */}
+       
+          <div className={styles.handburger} onClick={()=>setOpenMenu(!openMenu)}>
+            {openMenu ? <FaTimes /> : <AiOutlineMenu />}
+          </div>
+       
         <div className={styles.group}>
           <div className={styles.icons}>
             <div className={styles.icon_container}>

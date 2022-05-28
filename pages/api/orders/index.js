@@ -27,14 +27,6 @@ handler.post(async (req, res) => {
     res.status(201).send(order)
 })
 
-// handler.get(async (req, res) => {
-//   await db.connect();
 
-//   const orders = await Order.find({});
-
-//   await db.disconnect();
-
-//   res.send(products);
-// });
 
 export default handler;

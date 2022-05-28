@@ -12,6 +12,10 @@
     width: 90%;
     margin: 20px auto;
     background-color: rgba(165, 198, 288, .12);
+    background-color: rgba(245, 30, 0, .3);
+    background-color: #ecdf91;
+    background-color: #ece6e4;
+
     display: flex;
     align-items: center;
     justify-content: center;

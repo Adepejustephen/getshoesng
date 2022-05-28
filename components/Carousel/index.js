@@ -8,22 +8,24 @@ import data from "./data";
 const Carousel = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.icons_container}>
-        <div className={styles.arrow_container}>
-          <AiOutlineLeft />
-        </div>
-        <div className={styles.arrow_container}>
-          <AiOutlineRight />
-        </div>
-      </div>
       <div className={styles.slider_container}>
+        <div className={styles.icons_container}>
+          <div className={styles.arrow_container}>
+            <AiOutlineLeft />
+          </div>
+          <div className={styles.arrow_container}>
+            <AiOutlineRight />
+          </div>
+        </div>
         {data.map((item, id) => {
           return (
             <div key={id} className={styles.slide}>
-              <div className={styles.info_wrapper}>
-                <span>{item.name}</span>
+              <div className={styles.group}>
+                <div className={styles.info_wrapper}>
+                  <span>{item.name}</span>
+                </div>
               </div>
-              <div className={styles.image_container}>
+              <div className={styles.group}>
                 <div className={styles.image_wrapper}>
                   {/* <img src={item.image} alt='carousel-images' /> */}
                   <Image
@@ -34,7 +36,7 @@ const Carousel = () => {
                     alt="carousel-images"
                     layout="fill"
                     objectFit="cover"
-                    objectPosition='center'
+                    objectPosition="center"
                     className={styles.image}
                   />
                 </div>
@@ -43,7 +45,7 @@ const Carousel = () => {
           );
         })}
       </div>
-      </div>
+    </div>
   );
 };
 

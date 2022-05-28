@@ -1,0 +1,42 @@
+.container {
+  min-height: 50vh;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('../../public/images/carousel/carousel-background.jpg') center no-repeat;
+  background-size: cover;
+}
+
+.container > div {
+  max-width: 400px;
+  width: 100%;
+}
+
+.container h4 {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.container input {
+  width: 70%;
+  line-height: 50px;
+  border: none;
+  outline: none;
+  padding-left: 10px;
+}
+.container button {
+  width: 30%;
+  line-height: 50px;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  background-color: #000;
+}
+
+@media screen  and (max-width: 768px){
+   .container > div {
+  max-width: 90%;
+  width: 100%;
+} 
+}

@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import styles from "../../styles/pages/Order.module.css";
 import { Store } from "../../utils/store";
+import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import {
   CircularProgress,
   Grid,
@@ -18,8 +19,6 @@ import GppGoodOutlinedIcon from "@mui/icons-material/GppGoodOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import SwapHorizOutlinedIcon from "@mui/icons-material/SwapHorizOutlined";
 import axios from "axios";
-// import { CheckOutWizard } from "../../components";
-import { GiPencil } from "react-icons/gi";
 import { useRouter } from "next/router";
 import { useSnackbar } from "notistack";
 import { getError } from "../../utils/error";
@@ -59,7 +58,8 @@ function reducer(state, action) {
 }
 
 const Order = ({ params }) => {
-    const orderId = params.id
+  const orderId = params.id
+  const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
     const { state } = useContext(Store);
     const {
         userInfo
@@ -81,7 +81,7 @@ const {
   shippingMethod,
   orderItems,
   itemsPrice,
-  taxPrice,
+  // taxPrice,
   shippingPrice,
   totalPrice,
   isPaid,
@@ -136,6 +136,7 @@ useEffect(() => {
   }
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [order, successPay, successDeliver]);
+  
 
 function createOrder(data, actions) {
   return actions.order
@@ -197,7 +198,7 @@ async function deliverOrderHandler() {
       {loading ? (
         <CircularProgress />
       ) : error ? (
-        <span style={{color: '[#f04040'}}>{error}</span>
+        <span style={{ color: "[#f04040" }}>{error}</span>
       ) : (
         <Grid container spacing={2}>
           <Grid item xs={12} sm={8}>
@@ -207,13 +208,7 @@ async function deliverOrderHandler() {
               </div>
               <div>
                 <div className={styles.address}>
-                  <h4>
-                    ADDRESSES{" "}
-                    <GiPencil
-                      style={{ cursor: "pointer" }}
-                      onClick={() => router.push("/shippingaddress")}
-                    />
-                  </h4>
+                  <h4>ADDRESSES </h4>
                   <div className={styles.address_container}>
                     <div className={styles.address_box}>
                       <div>
@@ -226,6 +221,12 @@ async function deliverOrderHandler() {
                         <p>{shippingAddress.postalcode}</p>
                         <p>{shippingAddress.phone}</p>
                       </div>
+                      <span>
+                        Status:{" "}
+                        {isDelivered
+                          ? `delivered at ${deliveredAt}`
+                          : "not delivered"}
+                      </span>
                     </div>
                     <div className={styles.address_box}>
                       <div>
@@ -237,18 +238,15 @@ async function deliverOrderHandler() {
                         <p>{shippingAddress.country}</p>
                         <p>{shippingAddress.postalcode}</p>
                         <p>{shippingAddress.phone}</p>
+                        <span>
+                          Status: {isPaid ? `Paid at ${paidAt}` : "not paid"}
+                        </span>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className={styles.payment_method}>
-                  <h4>
-                    SHIPPING METHOD
-                    <GiPencil
-                      style={{ cursor: "pointer" }}
-                      onClick={() => router.push("/shippingmethod")}
-                    />
-                  </h4>
+                  <h4>SHIPPING METHOD</h4>
                   {shippingMethod === "dhl" ? (
                     <div>
                       <Image
@@ -351,25 +349,24 @@ async function deliverOrderHandler() {
               <div className={styles.sub_total}>
                 <div className={styles.sub_total_group}>
                   <span className={styles.sub_total_text}>Total</span>
-                  <span className={styles.sub_total_price}>
-                    $ {totalPrice}
-                    {/* {cartItems.length < 1
-                    ? "0"
-                    : cartItems.reduce((a, c) => a + c.quantity * c.price, 0) +
-                      shippingPrice} */}
-                  </span>
+                  <span className={styles.sub_total_price}>$ {totalPrice}</span>
                 </div>
               </div>
-              {/* <div className={styles.btns}>
-              <button
-                type="submit"
-                className={styles.a_btn}
-                onClick={placeOrderHandler}
-              >
-                Place order
-              </button>
-            </div>
-            {loading && <CircularProgress />} */}
+              <div className={styles.sub_total_group}>
+                {isPending && (
+                  <div>
+                    {isPending ? (
+                      <CircularProgress />
+                    ) : (
+                      <PayPalButtons
+                        createOrder={createOrder}
+                        onApprove={onApprove}
+                        onError={onError}
+                      />
+                    )}
+                  </div>
+                )}
+              </div>    
             </div>
             <div className={styles.policy_container}>
               <div className={styles.policy_item}>

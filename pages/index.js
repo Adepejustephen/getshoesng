@@ -11,6 +11,7 @@ import { Store } from "../utils/store";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import ProductWrapper from "../components/Product";
+import { SubScription } from "../components";
 
 export default function Home(props) {
   const { products } = props;
@@ -89,43 +90,10 @@ export default function Home(props) {
                   handleClick={addToCartHandler}
                   key={product._id}
                 />
-                // <div key={product._id} className={styles.product_wrapper}>
-                //   <Card elevation={0} variant="outlined">
-                //     <div className={styles.image_container}>
-                //       <Image
-                //         src={product.image[0]}
-                //         alt={product.name}
-                //         layout="fill"
-                //         objectFit="contain"
-                //         objectPosition="center"
-                //         // priority
-                //         loading="lazy"
-                //       />
-                //       <div className={styles.cart_icon_container}>
-                //         <BsCart2
-                //           className={styles.cart_icon}
-                //           onClick={() => addToCartHandler(product)}
-                //         />
-                //       </div>
-                //     </div>
-                //     <CardContent>
-                //       <div className={styles.product_info}>
-                //         <NextLink
-                //           href={`/products/product/${product.slug}`}
-                //           passHref
-                //         >
-                //           <a>
-                //             <p className={styles.product_name}>{product.name}</p>
-                //           </a>
-                //         </NextLink>
-                //         <h3 className={styles.product_price}>${product.price}</h3>
-                //       </div>
-                //     </CardContent>
-                //   </Card>
-                // </div>
               ))}
             </div>
           </section>
+          <SubScription/>
         </div>
       </div>
     </>

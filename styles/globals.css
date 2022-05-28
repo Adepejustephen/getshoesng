@@ -7,6 +7,13 @@ body,* {
   font-family: 'Josefin Sans', sans-serif;
 }
 
+body {
+  /* background-color: #020514; */
+  background-color: #f6f9ff;
+  /* background-color: #232425; */
+  /* #f09e1b */
+}
+
 a {
   color: inherit;
   text-decoration: none;

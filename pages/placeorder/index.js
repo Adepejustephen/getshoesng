@@ -133,7 +133,7 @@ const PlaceOrder = () => {
               </div>
               <div className={styles.payment_method}>
                 <h4>
-                  SHIPPING METHOD
+                  SHIPPING METHOD{" "}
                   <GiPencil
                     style={{ cursor: "pointer" }}
                     onClick={() => router.push("/shippingmethod")}
@@ -241,20 +241,19 @@ const PlaceOrder = () => {
             <div className={styles.sub_total}>
               <div className={styles.sub_total_group}>
                 <span className={styles.sub_total_text}>Total</span>
-                <span className={styles.sub_total_price}>
-                  $ {totalPrice}
-
-                </span>
+                <span className={styles.sub_total_price}>$ {totalPrice}</span>
               </div>
             </div>
             <div className={styles.btns}>
-              
-                <button type="submit" className={styles.a_btn} onClick={placeOrderHandler}>
-                  Place order
-                </button>
-           
+              <button
+                type="submit"
+                className={styles.a_btn}
+                onClick={placeOrderHandler}
+              >
+                Place order
+              </button>
             </div>
-            {loading && <CircularProgress/>}
+            {loading && <CircularProgress />}
           </div>
           <div className={styles.policy_container}>
             <div className={styles.policy_item}>
