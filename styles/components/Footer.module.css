@@ -6,9 +6,19 @@
     min-height: 40vh;
 }
 
+.title h2 {
+    color: #dd1530;
+}
+
+.title span {
+    color:  #24333b;
+}
+
 .group {
     display: flex;
     flex-direction: column;
+    color:  #24333b;
+
 }
 
 .group_header {
@@ -21,8 +31,26 @@
     margin-bottom: 10px;
 }
 
+.group p:last-of-type {
+    border-bottom: 1px solid #dd1530;
+    width: max-content;
+    padding-bottom: 5px;
+    transition: .3s;
+
+}
+
+.group p:last-of-type:hover{
+    
+    color: #999;
+    transition: .3s;
+
+}
+
 .group li {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    
+/* font-weight: 400; */
+
 }
 
 .group form {
@@ -38,8 +66,10 @@
     margin-right: 10px;
     padding-bottom: 20px;
      width: 70%;
+      transition: .3s;
    
 }
+
 
 .form_items > input, .form_items > button {
     line-height: 30px;
@@ -51,10 +81,26 @@
     
 }
 
+.form_items input:hover {
+   transition: .3s;
+   border-bottom: 1px solid #dd1530;
+   /* background-color: rgba(#012c39, .6); */
+   
+}
+
+
 .form_items > button {
     cursor: pointer;
     width: 30%;
     text-transform: uppercase;
+    transition: .3s;
+}
+
+.form_items > button:hover {
+    background-color: #24333b;;
+    transition: .3s;
+    color: #fff;
+   border-bottom: 1px solid #dd1530
 }
 
 @media screen and (max-width: 600px) {

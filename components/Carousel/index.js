@@ -9,14 +9,7 @@ const Carousel = () => {
   return (
     <div className={styles.container}>
       <div className={styles.slider_container}>
-        <div className={styles.icons_container}>
-          <div className={styles.arrow_container}>
-            <AiOutlineLeft />
-          </div>
-          <div className={styles.arrow_container}>
-            <AiOutlineRight />
-          </div>
-        </div>
+        
         {data.map((item, id) => {
           return (
             <div key={id} className={styles.slide}>

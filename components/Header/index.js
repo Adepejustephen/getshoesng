@@ -17,7 +17,7 @@ import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import { Card } from "@mui/material";
 import { Store } from "../../utils/store";
-// import CartList from '../CartList'
+
 import { useRouter } from "next/router";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -78,11 +78,14 @@ const Header = () => {
             })}
           </ul>
         </div>
-       
-          <div className={styles.handburger} onClick={()=>setOpenMenu(!openMenu)}>
-            {openMenu ? <FaTimes /> : <AiOutlineMenu />}
-          </div>
-       
+
+        <div
+          className={styles.handburger}
+          onClick={() => setOpenMenu(!openMenu)}
+        >
+          {openMenu ? <FaTimes /> : <AiOutlineMenu />}
+        </div>
+
         <div className={styles.group}>
           <div className={styles.icons}>
             <div className={styles.icon_container}>
@@ -95,7 +98,7 @@ const Header = () => {
                   <ul className={styles.user_menu_list}>
                     <li className={styles.user_menu_list_item}>
                       {userInfo ? (
-                        <NextLink href={"/account"} passHref>
+                        <NextLink href={"/my-account"} passHref>
                           <a>
                             <BiUserCircle className={styles.user_menu_icon} />
                             <span>{userInfo.name}</span>
@@ -119,7 +122,7 @@ const Header = () => {
                       )}
                     </li>
                     <li className={styles.user_menu_list_item}>
-                      <NextLink href={"/account"} passHref>
+                      <NextLink href={"/my-account"} passHref>
                         <a>
                           <HiOutlineUser className={styles.user_menu_icon} />
                           <span>My account</span>
@@ -162,8 +165,7 @@ const Header = () => {
           </div>
         </div>
       </nav>
-
-      <Carousel />
+      {router.pathname === "/" ? <Carousel /> : null}
     </header>
   );
 };

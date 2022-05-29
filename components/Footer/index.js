@@ -18,7 +18,7 @@ const Footer = () => {
           </div>
         </header>
         <div>
-          <p>no8 TCurrent Street, Alapere, Lagos Nigeria</p>
+          <p>No8 Current Street, Alapere, Lagos Nigeria</p>
           <p>+2348149735987</p>
           <p>
             <a href="mailto:adepejuifeoluwa97@gmail.com">
@@ -84,7 +84,7 @@ const Footer = () => {
           <span>Stay Updated on all that is new add noteworthy</span>
           <form>
             <div className={styles.form_items}>
-              <input type="email" placeholder="Your Email" />
+              <input type="email" placeholder="Your email..." />
               <button type="submit">Subscribe</button>
             </div>
           </form>
