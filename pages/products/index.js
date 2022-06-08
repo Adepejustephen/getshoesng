@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Grid } from "@mui/material";
 import styles from "../../styles/pages/Products.module.css";
 import db from "../../utils/db";
@@ -11,7 +11,21 @@ const Products = (props) => {
   const { products } = props;
   const { state, dispatch } = useContext(Store);
 
-  // const menuItems = [...new Set(data.map((Val) => Val.category))];
+  const allCategories = ["All", ...new Set(products.map((item) => item.category))];
+  const [newProducts, setNewProducts] = useState(products);
+  const [buttons, setButtons] = useState(allCategories);
+
+
+   const filter = (button) => {
+     if (button === "All") {
+       setNewProducts(products);
+       return;
+     }
+
+     const filteredData = products.filter((item) => item.category === button);
+     setNewProducts(filteredData);
+     
+   };
 
   // const filterItem = (curcat) => {
   //   const newItem = Data.filter((newVal) => {
@@ -37,13 +51,26 @@ const Products = (props) => {
 
   return (
     <div className={styles.container}>
-      <Grid container>
-        <Grid item xs={12} md={3}>
-          <p>hello</p>
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={12}>
+          <div className={styles.buttons}>
+            {buttons.map((cat, i) => {
+              return (
+                <button
+                  type="button"
+                  onClick={() => filter(cat)}
+                  className={styles.btn}
+                  key={i}
+                >
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
         </Grid>
-        <Grid item xs={12} md={9}>
+        <Grid item xs={12} md={12}>
           <div className={styles.products_container}>
-            {products.map((product) => (
+            {newProducts.map((product) => (
               <ProductWrapper
                 product={product}
                 handleClick={addToCartHandler}

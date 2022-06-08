@@ -40,7 +40,7 @@ const data = {
       name: "Nike ACG Air Deschutz + ",
       desc: " From city hikes to canyon trails and long walks on the beach, the Nike ACG Air Deschutz + is built to feel comfortable.It's got a classic '90s look and rugged outdoor-inspired design, with plush padding around the ankle for support.A heavy-duty webbing strap and adjustable hook-and-loop closure keep you focused on the journey ahead.",
       color: "Moon Fossil/Black",
-      category: "sandals",
+      category: "Sandals",
       status: "New Products",
       slug: "nike-acg-air-deschutz",
       image: [
@@ -79,7 +79,7 @@ const data = {
       name: "TERREX CYPREX ULTRA II DLX SANDALS ",
       desc: " From city hikes to canyon trails and long walks on the beach, the Nike ACG Air Deschutz + is built to feel comfortable.It's got a classic '90s look and rugged outdoor-inspired design, with plush padding around the ankle for support.A heavy-duty webbing strap and adjustable hook-and-loop closure keep you focused on the journey ahead.",
       color: "Wonder White/Pulse Lime/Crystal White",
-      category: "sandals",
+      category: "Sandals",
       status: "Trending",
       slug: "terrex-cyprex-ultra-ii-dlx-sandals",
       image: [

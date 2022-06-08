@@ -3,6 +3,29 @@
     padding:20px 0;
 }
 
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.btn {
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s;
+    color: #24333b;
+
+}
+
+.btn:hover {
+    transition: .3s;
+    color: #bbb;
+}
+
 .products_container {
     width: 100%;
     display: grid;
@@ -16,6 +39,15 @@
     
     .products_container {
         grid-template-columns: 1fr;
+    }
+
+    .buttons {
+        width: 100%;
+        /* flex-wrap: wrap; */
+    }
+
+    .btn {
+        font-size: 14px;
     }
 }
 

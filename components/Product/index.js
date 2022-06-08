@@ -18,12 +18,6 @@ const ProductWrapper = ({ handleClick, product }) => {
             objectFit="contain"
             objectPosition="center"
           />
-          <div className={styles.cart_icon_container}>
-            <BsCart2
-              className={styles.cart_icon}
-              onClick={() => handleClick(product)}
-            />
-          </div>
         </div>
         <CardContent>
           <div className={styles.product_info}>
@@ -32,6 +26,12 @@ const ProductWrapper = ({ handleClick, product }) => {
                 <p className={styles.product_name}>{product.name}</p>
               </a>
             </NextLink>
+            <div className={styles.cart_icon_container}>
+              <BsCart2
+                className={styles.cart_icon}
+                onClick={() => handleClick(product)}
+              />
+            </div>
             <h3 className={styles.product_price}>${product.price}</h3>
           </div>
         </CardContent>

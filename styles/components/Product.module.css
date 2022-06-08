@@ -6,14 +6,19 @@
 
 }
 
+.product_wrapper :hover {
+    color: #bbb;
+    transition: .3s;
+}
+
 .image_container {
     position: relative;
     height: 260px;
     width: 90%;
     margin: 20px auto;
-    background-color: rgba(165, 198, 288, .12);
+    /* background-color: rgba(165, 198, 288, .12);
     background-color: rgba(245, 30, 0, .3);
-    background-color: #ecdf91;
+    background-color: #ecdf91; */
     background-color: #ece6e4;
 
     display: flex;
@@ -24,7 +29,7 @@
 
 .cart_icon_container {
     position: absolute;
-    top: 10px;
+    bottom: 20px;
     right: 10px;
     border-radius: 50%;
     width: 40px;
@@ -39,6 +44,7 @@
     align-items: center;
     box-shadow: 1px 1px  rgba(0, 0, 0, .2);
     z-index: 2;
+    cursor: pointer;
 }
 
 .cart_icon {
@@ -48,15 +54,22 @@
 }
 
 .product_name {
-    color: #252525;
+    color: #24333b;
     cursor: pointer;
     text-transform: uppercase;
+    transition: .3s;
 }
 
 .product_price {
     font-weight: 700;
     font-size: 1.18rem;
-    color: #252525;
+    color: #24333b;
     margin-top: 10px;
+}
+
+
+
+.product_info {
+    position: relative;
 }
 
