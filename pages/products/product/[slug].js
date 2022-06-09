@@ -1,4 +1,5 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { useRouter } from "next/router";
 import NextLink from "next/link";
 import Image from "next/image";
 import axios from "axios";
@@ -8,11 +9,16 @@ import { Grid } from "@mui/material";
 import { BiArrowBack } from "react-icons/bi";
 import { Store } from "../../../utils/store";
 import styles from "../../../styles/pages/Product.module.css";
+import {  AddCartModal } from "../../../components";
 
 const ProductScreen = (props) => {
   const { product } = props;
 
   const { state, dispatch } = useContext(Store);
+
+  const [openModal, setOpenModal] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const addToCartHandler = async () => {
     const existItem = state.cart.cartItems.find((x) => x._id === product._id);
@@ -26,10 +32,24 @@ const ProductScreen = (props) => {
       type: "ADD_TO_CART_ITEMS",
       payload: { ...product, quantity },
     });
+    setOpenModal(true);
+  };
+
+  const onProceed = () => {
+    router.push("/cart");
+    setOpenModal(!openModal);
   };
 
   return (
     <div className={styles.container}>
+      {openModal ? (
+        <AddCartModal
+          onClose={() => {
+            setOpenModal(!openModal);
+          }}
+          onProceed={onProceed}
+        />
+      ) : null}
       <NextLink href={"/products"} passHref>
         <a className={styles.return_link}>
           <BiArrowBack />

@@ -18,6 +18,7 @@ export default function Home(props) {
   const { products } = props;
   const { state, dispatch } = useContext(Store);
   const [openModal, setOpenModal] = useState(false)
+  const [loading, setLoading] = useState(false)
   const router = useRouter()
 
   const trendingProducts = products.filter(
@@ -31,11 +32,10 @@ export default function Home(props) {
   // const [newProducts, setNewProducts] = useState("");
 
   const addToCartHandler = async (product) => {
+    setLoading(true)
     const existItem = state.cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${product._id}`);
-
-     setOpenModal(true);
     if (data.countInStock < quantity) {
       window.alert("Sorry. Product is out of stock");
     }
@@ -43,7 +43,8 @@ export default function Home(props) {
       type: "ADD_TO_CART_ITEMS",
       payload: { ...product, quantity },
     });
-
+setLoading(false)
+    setOpenModal(true);
    
   };
 
@@ -68,6 +69,7 @@ export default function Home(props) {
               setOpenModal(!openModal);
             }}
             onProceed={onProceed}
+
           />
         ) : null}
 
@@ -111,6 +113,8 @@ export default function Home(props) {
                   product={product}
                   handleClick={addToCartHandler}
                   key={product._id}
+                  loading={loading}
+                  className={styles.product_wrapper}
                 />
               ))}
             </div>

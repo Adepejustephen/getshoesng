@@ -27,6 +27,12 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: .3s;
+}
+
+.image_container:hover {
+    transform: scale(1.06);
+    transition: .3s;
 }
 
 .product_info {

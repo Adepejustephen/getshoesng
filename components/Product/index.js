@@ -4,9 +4,12 @@ import styles from '../../styles/components/Product.module.css'
 import { Card, CardContent } from '@mui/material'
 import Image from 'next/image'
 import { BsCart2 } from "react-icons/bs";
+import {
+  CircularProgress,
+} from "@mui/material";
 // import { BiPlus } from "react-icons/bi";
 
-const ProductWrapper = ({ handleClick, product }) => {
+const ProductWrapper = ({ handleClick, product, loading}) => {
   return (
     <div key={product._id} className={styles.product_wrapper}>
       <Card elevation={0} variant="outlined">
@@ -27,11 +30,16 @@ const ProductWrapper = ({ handleClick, product }) => {
               </a>
             </NextLink>
             <div className={styles.cart_icon_container}>
-              <BsCart2
-                className={styles.cart_icon}
-                onClick={() => handleClick(product)}
-              />
+              {loading ? (
+                <CircularProgress />
+              ) : (
+                <BsCart2
+                  className={styles.cart_icon}
+                  onClick={() => handleClick(product)}
+                />
+              )}
             </div>
+
             <h3 className={styles.product_price}>${product.price}</h3>
           </div>
         </CardContent>

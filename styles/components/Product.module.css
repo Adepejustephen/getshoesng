@@ -45,6 +45,7 @@
     box-shadow: 1px 1px  rgba(0, 0, 0, .2);
     z-index: 2;
     cursor: pointer;
+    display: none;
 }
 
 .cart_icon {
@@ -73,3 +74,11 @@
     position: relative;
 }
 
+.product_wrapper:hover .cart_icon_container {
+    display: flex;
+    transition: .3s;
+}
+.product_wrapper:hover .image_container {
+    transform: scale(1.05);
+    transition: .3s;
+}

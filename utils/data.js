@@ -175,7 +175,7 @@ const data = {
       desc: "Whether you're heading to the locker room after an intense gym session or at home recovering on the couch, these slides keep your feet wrapped in lightweight comfort. Pair them with socks and shorts for your post-workout look or with your favourite swimwear for the ultimate beach vibe. The adidas 3-Stripes design completes your sport style.",
       color: "Core Black",
       category: "Slides",
-      status: "old",
+      status: "New Products",
       slug: "adilette-comfort-slides",
       image: [
         "/images/products/adiletteComfort/img01.png",

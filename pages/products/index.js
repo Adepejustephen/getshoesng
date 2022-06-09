@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useRouter } from "next/router";
 import { Grid } from "@mui/material";
 import styles from "../../styles/pages/Products.module.css";
 import db from "../../utils/db";
@@ -6,6 +7,7 @@ import Product from "../../models/Product";
 import axios from "axios";
 import { Store } from "../../utils/store";
 import ProductWrapper from "../../components/Product";
+import { AddCartModal } from "../../components";
 
 const Products = (props) => {
   const { products } = props;
@@ -14,6 +16,9 @@ const Products = (props) => {
   const allCategories = ["All", ...new Set(products.map((item) => item.category))];
   const [newProducts, setNewProducts] = useState(products);
   const [buttons, setButtons] = useState(allCategories);
+  const [openModal, setOpenModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
 
    const filter = (button) => {
@@ -27,6 +32,11 @@ const Products = (props) => {
      
    };
 
+    const onProceed = () => {
+      router.push("/cart");
+      setOpenModal(!openModal);
+    };
+
   // const filterItem = (curcat) => {
   //   const newItem = Data.filter((newVal) => {
   //     return newVal.category === curcat;
@@ -36,6 +46,7 @@ const Products = (props) => {
   // };
 
   const addToCartHandler = async (product) => {
+     setLoading(true);
     const existItem = state.cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${product._id}`);
@@ -47,10 +58,20 @@ const Products = (props) => {
       type: "ADD_TO_CART_ITEMS",
       payload: { ...product, quantity },
     });
+    setLoading(false);
+    setOpenModal(true);
   };
 
   return (
     <div className={styles.container}>
+      {openModal ? (
+        <AddCartModal
+          onClose={() => {
+            setOpenModal(!openModal);
+          }}
+          onProceed={onProceed}
+        />
+      ) : null}
       <Grid container spacing={3}>
         <Grid item xs={12} md={12}>
           <div className={styles.buttons}>
@@ -75,6 +96,7 @@ const Products = (props) => {
                 product={product}
                 handleClick={addToCartHandler}
                 key={product._id}
+                loading={loading}
               />
             ))}
           </div>
