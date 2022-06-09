@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie'
+
 import { createContext, useReducer } from 'react'
 
 export const Store = createContext()
@@ -7,21 +8,23 @@ const initialState = {
     cartItems: Cookies.get("cartItems")
       ? JSON.parse(Cookies.get("cartItems"))
       : [],
-    shippingAddress: Cookies.get("shippingAddresss")
+    shippingAddress: Cookies.get("shippingAddress")
       ? JSON.parse(Cookies.get("shippingAddress"))
       : {},
     shippingMethod: Cookies.get("shippingMethod")
       ? Cookies.get("shippingMethod")
       : "",
   },
-  userInfo: Cookies.get("userInfoo")
-    ? JSON.parse(Cookies.get("userInfo"))
-    : null,
+  userInfo: Cookies.get("userInfo") ?JSON.parse( Cookies.get("userInfo") ): null,
+
+  // Cookies.get("userInfo")
+  // ? JSON.parse(Cookies.get("userInfo"))
+  // : null,
 };
 
-console.log(initialState.userInfo);
-console.log(initialState.cart.cartItems);
-console.log(initialState.cart.shippingAddress);
+// console.log(initialState.userInfo);
+// console.log(initialState.cart.cartItems);
+// console.log(initialState.cart.shippingAddress);
 
 
 

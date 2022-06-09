@@ -69,7 +69,7 @@ const ShippingAddress = () => {
       },
     });
 
-    Cookies.set("shippingAddress", {
+    Cookies.set("shippingAddress", JSON.stringify({
       fullName,
       email,
       address,
@@ -78,7 +78,7 @@ const ShippingAddress = () => {
       country,
       postalCode,
       phone,
-    });
+    }));
 
     router.push("/shippingmethod");
   };
