@@ -17,14 +17,12 @@ const initialState = {
   },
   userInfo: Cookies.get("userInfo") ?JSON.parse( Cookies.get("userInfo") ): null,
 
-  // Cookies.get("userInfo")
-  // ? JSON.parse(Cookies.get("userInfo"))
-  // : null,
+ 
 };
 
-// console.log(initialState.userInfo);
-// console.log(initialState.cart.cartItems);
-// console.log(initialState.cart.shippingAddress);
+console.log(initialState.userInfo);
+console.log(initialState.cart.cartItems);
+console.log(initialState.cart.shippingAddress);
 
 
 
@@ -52,7 +50,6 @@ function reducer(state, action) {
       const cartItems = state.cart.cartItems.filter(
         (item) => item._id !== action.payload._id
       );
-      // Cookies.set("cartItems", JSON.stringify(cartItems));
       Cookies.set("cartItems", JSON.stringify(cartItems));
 
       return { ...state, cart: { ...state.cart, cartItems } };
