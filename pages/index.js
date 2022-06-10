@@ -67,21 +67,17 @@ setLoading(false)
           property="og:description"
           content="The number one mean place for men shoes in Nigeria"
         />
-
         <meta property="og:type" content="website" />
-
         <meta
           name="image"
           property="og:image"
-          content="/public/images/MENSHOESNG3.png"
+          content="%PUBLIC_URL%/ogphoto.png"
         />
-
         <meta
           name="description"
           property="og:description"
           content="Ifeoluwa Adepeju portfolio site"
         />
-
         <meta name="author" content="Ifeoluwa Adepeju" />
       </Head>
       <div className={styles.container}>
