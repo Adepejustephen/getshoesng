@@ -68,11 +68,12 @@ setLoading(false)
           content="The number one mean place for men shoes in Nigeria"
         />
         <meta property="og:type" content="website" />
+        <meta name="image" property="og:image" content="public/ogphoto.png" />
         <meta
           name="image"
           property="og:image"
-          content="public/ogphoto.png"
-        />
+          content="%PUBLIC_URL%/ogphoto.png.png"
+        ></meta>
         <meta
           name="description"
           property="og:description"
