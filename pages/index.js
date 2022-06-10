@@ -71,7 +71,7 @@ setLoading(false)
         <meta
           name="image"
           property="og:image"
-          content="%PUBLIC_URL%/ogphoto.png"
+          content="public/ogphoto.png"
         />
         <meta
           name="description"
