@@ -16,6 +16,9 @@
 .container h4 {
   margin-bottom: 40px;
   text-align: center;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 900;
 }
 
 .container input {

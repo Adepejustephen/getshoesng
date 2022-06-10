@@ -64,14 +64,14 @@ const Products = (props) => {
 
   return (
     <div className={styles.container}>
-      {openModal ? (
+      {openModal && (
         <AddCartModal
           onClose={() => {
             setOpenModal(!openModal);
           }}
           onProceed={onProceed}
         />
-      ) : null}
+      ) }
       <Grid container spacing={3}>
         <Grid item xs={12} md={12}>
           <div className={styles.buttons}>

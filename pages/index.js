@@ -63,7 +63,7 @@ setLoading(false)
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.container}>
-        {openModal ? (
+        {openModal && (
           <AddCartModal
             onClose={() => {
               setOpenModal(!openModal);
@@ -71,7 +71,7 @@ setLoading(false)
             onProceed={onProceed}
 
           />
-        ) : null}
+        ) }
 
         <div className={styles.main}>
           <section>

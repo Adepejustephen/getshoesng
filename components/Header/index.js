@@ -29,7 +29,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     lineHeight: "12px",
     // border: `2px solid ${theme.palette.background.paper}`,
     padding: "2px",
-    backgroundColor: "coral",
+    backgroundColor: "#d92e28",
     cursor: "pointer",
     height: "16px",
     minWidth: "16px",
@@ -165,7 +165,7 @@ const Header = () => {
           </div>
         </div>
       </nav>
-      {router.pathname === "/" ? <Carousel /> : null}
+      {router.pathname === "/" && <Carousel /> }
     </header>
   );
 };

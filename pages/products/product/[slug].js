@@ -42,14 +42,14 @@ const ProductScreen = (props) => {
 
   return (
     <div className={styles.container}>
-      {openModal ? (
+      {openModal && (
         <AddCartModal
           onClose={() => {
             setOpenModal(!openModal);
           }}
           onProceed={onProceed}
         />
-      ) : null}
+      )}
       <NextLink href={"/products"} passHref>
         <a className={styles.return_link}>
           <BiArrowBack />

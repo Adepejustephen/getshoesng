@@ -79,6 +79,6 @@
     transition: .3s;
 }
 .product_wrapper:hover .image_container {
-    transform: scale(1.05);
+    transform: scale(.9);
     transition: .3s;
 }
