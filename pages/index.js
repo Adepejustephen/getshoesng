@@ -68,11 +68,12 @@ setLoading(false)
           content="The number one mean place for men shoes in Nigeria"
         />
         <meta property="og:type" content="website" />
+        <meta property="type" content="website" />
 
         <meta
           name="image"
           property="og:image"
-          content="../public/ogphoto.png"
+          content="https://menshoesng.vercel.app/ogphoto.png"
         />
         <meta name="author" content="Ifeoluwa Adepeju" />
       </Head>
