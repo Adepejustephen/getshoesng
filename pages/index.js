@@ -73,11 +73,6 @@ setLoading(false)
           name="image"
           property="og:image"
           content="../public/ogphoto.png"
-        ></meta>
-        <meta
-          name="description"
-          property="og:description"
-          content="Ifeoluwa Adepeju portfolio site"
         />
         <meta name="author" content="Ifeoluwa Adepeju" />
       </Head>
