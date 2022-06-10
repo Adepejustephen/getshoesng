@@ -61,6 +61,28 @@ setLoading(false)
           content="The number one mean place for men shoes in Nigeria"
         />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="title" property="og:title" content="MENSHOESNG" />
+        <meta
+          name="keywords"
+          property="og:description"
+          content="The number one mean place for men shoes in Nigeria"
+        />
+
+        <meta property="og:type" content="website" />
+
+        <meta
+          name="image"
+          property="og:image"
+          content="/public/images/MENSHOESNG3.png"
+        />
+
+        <meta
+          name="description"
+          property="og:description"
+          content="Ifeoluwa Adepeju portfolio site"
+        />
+
+        <meta name="author" content="Ifeoluwa Adepeju" />
       </Head>
       <div className={styles.container}>
         {openModal && (
@@ -69,9 +91,8 @@ setLoading(false)
               setOpenModal(!openModal);
             }}
             onProceed={onProceed}
-
           />
-        ) }
+        )}
 
         <div className={styles.main}>
           <section>
