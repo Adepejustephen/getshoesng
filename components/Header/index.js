@@ -47,7 +47,7 @@ const Header = () => {
 
   const logOutHandler = () => {
     dispatch({ type: 'LOGOUT_USER' })
-    Cookies.remove("userInformation");
+    Cookies.remove("userInfo");
     Cookies.remove('cartItems');
     router.push('/')
     

@@ -1,10 +1,12 @@
 .container {
-  width: 96%;
+  width: 96vw;
   margin: 0 auto;
   min-height: 80vh;
+   overflow-x: hidden;
   /* display: flex; */
   position: relative;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .1);
+  background-color: #ECE6E4;
 
   /* display: none; */
 }
@@ -13,6 +15,7 @@
   width: 80px;
   height: 80px;
 background:  #d92e28;
+/* background:  #eee4e3; */
   /* border-radius: 50%; */
   display: flex;
   align-items: center;
@@ -48,14 +51,17 @@ background:  #d92e28;
 
 .slider_container {
   display: flex;
-  min-height: 80vh;
+  /* min-height: 80vh; */
   height: 100%;
+  width: 100%;
   align-items: center;
+  transition: all .5s ease-in;
   /* width: 95%;
   margin: auto; */
- background-color: #ECE6E4;
+ 
   position: relative;
-  overflow-x: hidden;
+ 
+  z-index: 9;
   /* background: url('../../public/images/carousel/carousel-background2.jpg') center no-repeat; */
   /* background-size: cover; */
  
@@ -66,7 +72,7 @@ background:  #d92e28;
   /* overflow-x: hidden; */
 }
 
-.slider_container::after {
+.container::after {
     content: '';
     position: absolute;
     right:  0;
@@ -86,7 +92,7 @@ background:  #d92e28;
     
    
 }
-.slider_container::before {
+.container::before {
     content: '';
     position: absolute;
     right:  0;
@@ -108,6 +114,7 @@ background:  #d92e28;
   height: 100%;
   display: flex;
   align-items: center;
+  z-index: 9;
   /* flex: 1; */
 }
 

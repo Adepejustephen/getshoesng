@@ -8,8 +8,8 @@
      image: "/images/products/nikeBeTrue/img01.png",
    },
    {
-     name: "Official Shoes",
-     image: "/images/products/nikeBeTrue/img01.png",
+     name: "Slides",
+     image: "/images/products/racerTr/img01.png",
    },
  ]; 
 

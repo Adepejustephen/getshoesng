@@ -17,12 +17,9 @@ const initialState = {
   },
   userInfo: Cookies.get("userInfo") ?JSON.parse( Cookies.get("userInfo") ): null,
 
- 
 };
 
-console.log(initialState.userInfo);
-console.log(initialState.cart.cartItems);
-console.log(initialState.cart.shippingAddress);
+
 
 
 

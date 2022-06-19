@@ -13,7 +13,7 @@
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.6.1",
     "@mui/material": "^5.5.3",
-    "@paypal/react-paypal-js": "^7.7.0",
+    "@paypal/react-paypal-js": "^7.2.0",
     "axios": "^0.26.1",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
@@ -28,6 +28,7 @@
     "react-hook-form": "^7.30.0",
     "react-icons": "^4.3.1",
     "react-paystack": "^3.0.5",
+    "styled-components": "^5.3.5",
     "swiper": "^8.1.1"
   },
   "devDependencies": {
