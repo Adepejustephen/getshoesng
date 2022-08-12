@@ -8,7 +8,6 @@ import { BsCart2 } from "react-icons/bs";
 import { IoSearchOutline } from "react-icons/io5";
 import { AiOutlineUser, AiOutlineMenu } from "react-icons/ai";
 import { FaTimes } from "react-icons/fa";
-// import { BiMenu } from "react-icons/bi";
 import { TiLockClosed } from "react-icons/ti";
 import { HiOutlineUser } from "react-icons/hi";
 import { MdExitToApp } from "react-icons/md";

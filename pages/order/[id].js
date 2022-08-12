@@ -353,20 +353,22 @@ async function deliverOrderHandler() {
                 </div>
               </div>
               <div className={styles.sub_total_group}>
-                {isPending && (
-                  <div>
+                {!isPaid && (
+                  <div className={styles.paypal__buttons}>
                     {isPending ? (
                       <CircularProgress />
                     ) : (
-                      <PayPalButtons
-                        createOrder={createOrder}
-                        onApprove={onApprove}
-                        onError={onError}
-                      />
+                      <div className={styles.paypal__buttons}>
+                        <PayPalButtons
+                          createOrder={createOrder}
+                          onApprove={onApprove}
+                          onError={onError}
+                        />
+                      </div>
                     )}
                   </div>
                 )}
-              </div>    
+              </div>
             </div>
             <div className={styles.policy_container}>
               <div className={styles.policy_item}>

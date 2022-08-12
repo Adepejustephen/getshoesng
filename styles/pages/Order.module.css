@@ -243,6 +243,12 @@ padding: 20px 15px;
   cursor: pointer;
 }
 
+.paypal__buttons{
+  width: 100%;
+  /* display: flex;
+  justify-content: center; */
+}
+
 @media screen and (max-width:768px) {
 
     .list_container {

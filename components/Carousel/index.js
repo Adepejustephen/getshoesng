@@ -80,7 +80,7 @@ const Carousel = () => {
                     objectFit="cover"
                     objectPosition="center"
                     className={styles.image}
-                    lazyLoading
+                    
                   />
                 </div>
               </div>

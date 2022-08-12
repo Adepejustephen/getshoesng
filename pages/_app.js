@@ -13,7 +13,9 @@ function MyApp({ Component, pageProps }) {
       }}
     >
       <StoreProvider>
-        <PayPalScriptProvider deferLoading={true}>
+        <PayPalScriptProvider
+          deferLoading={true}
+        >
           <Layout>
             <Component {...pageProps} />
           </Layout>

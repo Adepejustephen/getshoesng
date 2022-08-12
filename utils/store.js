@@ -3,6 +3,8 @@ import Cookies from 'js-cookie'
 import { createContext, useReducer } from 'react'
 
 export const Store = createContext()
+
+
 const initialState = {
   cart: {
     cartItems: Cookies.get("cartItems")
@@ -57,6 +59,9 @@ function reducer(state, action) {
         ...state,
         cart: { ...state.cart, shippingAddress: action.payload },
       };
+
+    case "CLEAR_CART":
+      return { ...state, cart: { ...state.cart, cartItems: [] } };
 
     case "SAVE_SHIPPING_METHOD":
       return {

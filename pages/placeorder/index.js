@@ -76,7 +76,7 @@ const PlaceOrder = () => {
           },
         }
       );
-      dispatch({ type: 'CART_CLEAR' })
+      dispatch({ type: 'CLEAR_CART' })
       Cookies.remove('cartItems')
       setLoading(false);
       router.push(`/order/${data._id}`)

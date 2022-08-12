@@ -181,7 +181,7 @@ const Register = () => {
           )}
         </div>
         <div className={styles.form_item}>
-          <label htmlFor="email"> Confirm Password</label>
+          <label htmlFor="password"> Confirm Password</label>
           <Controller
             name="confirmPassword"
             control={control}
