@@ -1,8 +1,8 @@
 import nc from "next-connect";
-import db from "../../../utils/db";
-import { isAuth } from "../../../utils/auth";
-import Order from "../../../models/Order";
-import { onError } from "../../../utils/error";
+import db from "../../../../utils/db";
+import { isAuth } from "../../../../utils/auth";
+import Order from "../../../../models/Order";
+import { onError } from "../../../../utils/error";
 
 const handler = nc({
   onError,
@@ -25,7 +25,7 @@ handler.put(async (req, res) => {
             email_address: req.body.email_address
         }
 
-        const paidOrder = await Order.save()
+        const paidOrder = await order.save()
         res.send({message: "order paid", order: paidOrder});
     }
 

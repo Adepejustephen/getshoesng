@@ -163,7 +163,7 @@ function onApprove(data, actions) {
         }
       );
       dispatch({ type: "PAY_SUCCESS", payload: data });
-      enqueueSnackbar("Order is paid", { variant: "success" });
+      enqueueSnackbar("Payment successful", { variant: "success" });
     } catch (err) {
       dispatch({ type: "PAY_FAIL", payload: getError(err) });
       enqueueSnackbar(getError(err), { variant: "error" });
