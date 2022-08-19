@@ -9,6 +9,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Store } from "../../utils/store";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import styles from '../../styles/pages/MyAccount.module.css'
+import { Hero } from "../../components";
 
 const MyAccount = () => {
   const { state, dispatch } = useContext(Store);
@@ -30,32 +31,30 @@ const MyAccount = () => {
    };
 
   return (
-    <div className={styles.container}>
-      <h2>Your account</h2>
-      <div className={styles.links}>
-        <NextLink href="/infomation" passHref>
-          <div className={styles.link}>
-            <AccountCircleIcon style={{ fontSize: 40, color: " #24333b" }} />
-            <span>INFORMATION</span>
-          </div>
-        </NextLink>
-        <NextLink href="/infomation" passHref>
-          <div className={styles.link}>
-            <IoLocationSharp style={{ fontSize: 40, color: "#24333b" }} />
-            <span>ADDRESS</span>
-          </div>
-        </NextLink>
-        <NextLink href="/infomation" passHref>
-          <div className={styles.link}>
-            <DateRangeIcon style={{ fontSize: 40, color: "#24333b" }} />
-            <span>ORDER DETAILS AND HISTORY</span>
-          </div>
-        </NextLink>
+    <>
+      <Hero  currentPage={"My Account"} />
+      <div className={styles.container}>
+        <h2>Your account</h2>
+        <div className={styles.links}>
+          <NextLink href="/information" passHref>
+            <div className={styles.link}>
+              <AccountCircleIcon style={{ fontSize: 40, color: " #24333b" }} />
+              <span>PROFILE INFORMATION</span>
+            </div>
+          </NextLink>
+          
+          <NextLink href="/order-history" passHref>
+            <div className={styles.link}>
+              <DateRangeIcon style={{ fontSize: 40, color: "#24333b" }} />
+              <span>ORDER DETAILS AND HISTORY</span>
+            </div>
+          </NextLink>
+        </div>
+        <span className={styles.logoutBtn} onClick={logOutHandler}>
+          <span>Sign out</span>
+        </span>
       </div>
-      <span className={styles.logoutBtn} onClick={logOutHandler}>
-        <span>Sign out</span>
-      </span>
-    </div>
+    </>
   );
 };
 

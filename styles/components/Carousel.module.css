@@ -174,3 +174,11 @@ background:  #d92e28;
   display: flex;
   flex-direction: column;
 }
+
+
+@media screen and (max-width: 900px) {
+  
+  .container{
+    display: none;
+  }
+}

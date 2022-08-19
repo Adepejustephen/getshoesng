@@ -31,7 +31,7 @@
 }
 
 .image_container:hover {
-    transform: scale(1.06);
+    transform: scale(1.01);
     transition: .3s;
 }
 

@@ -1,0 +1,124 @@
+.orderHistory__container {
+    display: flex;
+    flex-direction: column;
+    /* margin: 30px; */
+}
+
+.main__content {
+    width: 90%;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    display: block;
+}
+
+.title h4{
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+.title p {
+    margin-bottom: 1rem;
+}
+.order__desktop {
+    overflow-x: auto;
+}
+
+.table{
+    width: 100%;
+    border-collapse: collapse;
+    background-color: transparent;
+    border: 1px solid #eceeef;
+}
+.table__header {
+padding: 15px;
+  text-align: left;
+    background-color: #24d1b1;
+
+
+  
+}
+
+.table__headData, .table__bodyData {
+    padding: 2rem;
+  text-align: left;
+}
+
+.btn {
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: rgb(44, 102, 25);
+   
+
+}
+
+/* th, td {
+  padding: 15px;
+  text-align: left;
+} */
+
+
+
+.table__headData {
+    vertical-align: bottom;
+    border-bottom: 2px solid #eceeef;
+  
+
+}
+
+.table__row {
+    background-color: transparent;
+}
+
+
+.table__bodyRow:nth-of-type(even) {
+    background-color: rgba(0,0,0,.05);
+    width: 100%;
+}
+
+
+
+.bottom {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    font-size: .8rem;
+}
+
+.bottom a:hover {
+color: #e2540c;
+transition: .3s;
+
+}
+
+@media screen and (max-width: 900px) {
+    .order__desktop {
+        display: none    }
+}
+
+@media screen and (max-width: 600px) {
+   .title h4{
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+
+
+.main__content {
+    width: 100%;
+   
+   
+}
+}
+
+

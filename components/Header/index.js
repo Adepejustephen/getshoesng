@@ -100,7 +100,7 @@ const Header = () => {
                         <NextLink href={"/my-account"} passHref>
                           <a>
                             <BiUserCircle className={styles.user_menu_icon} />
-                            <span>{userInfo.name}</span>
+                            <span>Hello {userInfo.name}</span>
                           </a>
                         </NextLink>
                       ) : null}

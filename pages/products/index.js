@@ -7,7 +7,7 @@ import Product from "../../models/Product";
 import axios from "axios";
 import { Store } from "../../utils/store";
 import ProductWrapper from "../../components/Product";
-import { AddCartModal } from "../../components";
+import { AddCartModal, Hero } from "../../components";
 
 const Products = (props) => {
   const { products } = props;
@@ -63,46 +63,50 @@ const Products = (props) => {
   };
 
   return (
-    <div className={styles.container}>
-      {openModal && (
-        <AddCartModal
-          onClose={() => {
-            setOpenModal(!openModal);
-          }}
-          onProceed={onProceed}
-        />
-      ) }
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={12}>
-          <div className={styles.buttons}>
-            {buttons.map((cat, i) => {
-              return (
-                <button
-                  type="button"
-                  onClick={() => filter(cat)}
-                  className={styles.btn}
-                  key={i}
-                >
-                  {cat}
-                </button>
-              );
-            })}
-          </div>
+    <>
+      <Hero currentPage={ 'Products'} />
+      <div className={styles.container}>
+        {openModal && (
+          <AddCartModal
+            onClose={() => {
+              setOpenModal(!openModal);
+            }}
+            onProceed={onProceed}
+          />
+        )}
+        <h4 className={styles.title}>Products</h4>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={12}>
+            <div className={styles.buttons}>
+              {buttons.map((cat, i) => {
+                return (
+                  <button
+                    type="button"
+                    onClick={() => filter(cat)}
+                    className={styles.btn}
+                    key={i}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
+            </div>
+          </Grid>
+          <Grid item xs={12} md={12}>
+            <div className={styles.products_container}>
+              {newProducts.map((product) => (
+                <ProductWrapper
+                  product={product}
+                  handleClick={addToCartHandler}
+                  key={product._id}
+                  loading={loading}
+                />
+              ))}
+            </div>
+          </Grid>
         </Grid>
-        <Grid item xs={12} md={12}>
-          <div className={styles.products_container}>
-            {newProducts.map((product) => (
-              <ProductWrapper
-                product={product}
-                handleClick={addToCartHandler}
-                key={product._id}
-                loading={loading}
-              />
-            ))}
-          </div>
-        </Grid>
-      </Grid>
-    </div>
+      </div>
+    </>
   );
 };
 

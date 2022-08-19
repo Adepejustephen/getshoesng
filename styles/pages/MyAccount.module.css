@@ -12,9 +12,10 @@
 
 .links {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
     margin: 40px 0;
+    
 }
 
 .link {
@@ -33,6 +34,11 @@
      
 }
 
+.link:hover {
+    color: #dd1530;
+    transition: .3s;
+}
+
 .logoutBtn {
     cursor: pointer;
     transition: .3s;
@@ -42,4 +48,20 @@
 .logoutBtn:hover {
     color: #dd1530;
     transition: .3s;
+}
+
+@media screen and (max-width: 800px) {
+  .links {
+   
+    grid-template-columns:  1fr 1fr;
+    
+}  
+}
+
+@media screen and (max-width: 600px) {
+  .links {
+   
+    grid-template-columns:  1fr;
+    
+}  
 }

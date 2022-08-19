@@ -3,3 +3,4 @@ export { default as CheckOutWizard } from "./CheckOutWizard";
 export { default as Totals } from "./Totals";
 export { default as SubScription } from "./SubSection";
 export { default as AddCartModal } from "./AddCartModal";
+export { default as Hero } from "./Hero";
